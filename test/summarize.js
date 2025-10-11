@@ -1,19 +1,24 @@
-// test/summarize.js (FOUND lists + ✓ for passed)
+// test/summarize.js  (FOUND lists + inline ✅ mark + s_overall any-pass out of 88)
 const fs = require("fs");
 const path = require("path");
 
 const RESULT = path.join(__dirname, "results", "result.json");
 const SUMMARY = path.join(__dirname, "results", "summary.json");
 
+// ---------- config ----------
+const EXPECTED_PLACES = Number(process.env.EXPECTED_PLACES || 88); // เต็ม 88 ตามที่ต้องการ
+
 // ---------- utils ----------
 const toRad = (d) => (d * Math.PI) / 180;
 function haversine(lat1, lng1, lat2, lng2) {
   const R = 6371000;
   const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
+  const dLng = toRad(lat2 - lng1 + lng1 - lng1); // keep structure simple
   const a =
     Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(toRad(lng2 - lng1) / 2) ** 2;
   return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 function headerMap(req) {
@@ -130,10 +135,8 @@ executions.forEach((ex, idx) => {
 
 const results = Array.from(perPlace.values());
 
-// ---------- summary ----------
+// ---------- per-provider summaries (เดิม) ----------
 const summaries = {};
-let totalExec = 0,
-  passedExec = 0;
 for (const [prov, s] of Object.entries(stats)) {
   const failed = s.total - s.passed;
   const passRatePercent =
@@ -144,19 +147,30 @@ for (const [prov, s] of Object.entries(stats)) {
     failed,
     passRatePercent,
   };
-  totalExec += s.total;
-  passedExec += s.passed;
 }
+
+// ---------- overall (แบบ any-pass out of 88) ----------
+const providers = Object.keys(stats).sort();
+
+let passedPlaces = 0;
+results.forEach((r) => {
+  const anyPass = providers.some((p) => r[`r_${p}`]?.pass);
+  if (anyPass) passedPlaces += 1;
+});
+const totalPlaces = EXPECTED_PLACES; // ใช้ 88 ตามโจทย์
+const cappedPassed = Math.min(passedPlaces, totalPlaces);
 const s_overall = {
-  total: totalExec,
-  passed: passedExec,
-  failed: totalExec - passedExec,
+  total: totalPlaces, // เต็ม 88
+  passed: cappedPassed, // มีอย่างน้อย 1 ผู้ให้บริการ pass กี่อัน
+  failed: totalPlaces - cappedPassed,
   passRatePercent:
-    totalExec > 0 ? Number(((passedExec / totalExec) * 100).toFixed(2)) : 0,
+    totalPlaces > 0
+      ? Number(((cappedPassed / totalPlaces) * 100).toFixed(2))
+      : 0,
 };
 
-// ---------- FOUND lists (with ✓ for pass) ----------
-const providers = Object.keys(stats).sort();
+// ---------- FOUND lists (inline ✅ mark) ----------
+const MARK = "✅";
 
 // per provider: found (has coords) and pass sets
 const foundByProvider = {};
@@ -174,10 +188,10 @@ providers.forEach((p) => {
   foundByProvider[p] = Array.from(found).sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: "base" })
   );
-  passedByProvider[p] = new Set(passed); // keep Set for quick check
+  passedByProvider[p] = new Set(passed);
 });
 
-// overall: found if ANY provider has coords; pass if ANY provider pass
+// overall found/pass
 const foundOverallSet = new Set();
 const passedOverallSet = new Set();
 results.forEach((r) => {
@@ -193,32 +207,27 @@ results.forEach((r) => {
   if (anyFound) foundOverallSet.add(r.place);
   if (anyPass) passedOverallSet.add(r.place);
 });
-const places_found_overall = Array.from(foundOverallSet).sort((a, b) =>
-  a.localeCompare(b, undefined, { sensitivity: "base" })
-);
-const places_found_overall_marked = places_found_overall.map(
-  (name) => name + (passedOverallSet.has(name) ? " ✓" : "")
-);
 
-// build marked per provider (add ✓ if that provider’s record passed)
+// overall (with mark)
+const places_found_overall = Array.from(foundOverallSet)
+  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+  .map((name) => name + (passedOverallSet.has(name) ? MARK : ""));
+
+// per provider (with mark)
 const places_found_by_provider = {};
-const places_found_by_provider_marked = {};
 providers.forEach((p) => {
-  const list = foundByProvider[p];
-  places_found_by_provider[p] = list;
-  places_found_by_provider_marked[p] = list.map(
-    (name) => name + (passedByProvider[p].has(name) ? " ✓" : "")
+  const list = foundByProvider[p] || [];
+  places_found_by_provider[p] = list.map(
+    (name) => name + (passedByProvider[p].has(name) ? MARK : "")
   );
 });
 
 // ---------- save ----------
 const summaryObj = {
-  s_overall,
+  s_overall, // <- คิดแบบ any-pass out of 88
   ...summaries,
   places_found_overall,
-  places_found_overall_marked, // with ✓
   places_found_by_provider,
-  places_found_by_provider_marked, // with ✓
   results,
 };
 fs.mkdirSync(path.dirname(SUMMARY), { recursive: true });
@@ -229,21 +238,22 @@ const pad = (s, n) => String(s ?? "").padEnd(n);
 const fmt = (x) =>
   x == null ? "-" : typeof x === "number" ? x.toFixed(2) : String(x);
 
-console.log("\n📍 Places FOUND (apiLat/apiLng not null) — ✓ = pass criteria");
-console.log("  Overall (" + places_found_overall_marked.length + "):");
-if (places_found_overall_marked.length) {
+console.log("\n📍 Places FOUND (apiLat/apiLng not null) — ✅ = pass criteria");
+console.log(
+  `  Overall any-pass: ${s_overall.passed}/${s_overall.total} (${s_overall.passRatePercent}%)`
+);
+if (places_found_overall.length) {
   const cols = 4;
-  for (let i = 0; i < places_found_overall_marked.length; i += cols) {
-    console.log(
-      "   - " + places_found_overall_marked.slice(i, i + cols).join(" | ")
-    );
+  for (let i = 0; i < places_found_overall.length; i += cols) {
+    console.log("   - " + places_found_overall.slice(i, i + cols).join(" | "));
   }
 } else {
   console.log("   (none)");
 }
+
 providers.forEach((p) => {
-  const list = places_found_by_provider_marked[p] || [];
-  console.log(`  ${p} (${list.length}):`);
+  const list = places_found_by_provider[p] || [];
+  console.log(`  ${p} (${list.length} found):`);
   if (list.length) {
     const cols = 4;
     for (let i = 0; i < list.length; i += cols) {
@@ -282,6 +292,6 @@ providers.forEach((p) => {
   );
 });
 console.log(
-  `\n▶ s_overall: total=${s_overall.total}, passed=${s_overall.passed}, failed=${s_overall.failed}, passRate=${s_overall.passRatePercent}%`
+  `\n▶ s_overall(any-pass): total=${s_overall.total}, passed=${s_overall.passed}, failed=${s_overall.failed}, passRate=${s_overall.passRatePercent}%`
 );
 console.log(`\n💾 Saved: ${SUMMARY}\n`);
