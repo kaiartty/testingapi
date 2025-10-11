@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "geotest:prep": "node -e \"require('fs').mkdirSync('test/results',{recursive:true})\"",
+    "geotest:run": "newman run ./test/test.json --env-var baseUrl=http://localhost:5000 --iteration-data ./test/places.csv --reporters json --reporter-json-export ./test/results/result.json --suppress-exit-code",
+    "geotest": "npm run geotest:prep && npm run geotest:run && node ./test/summarize.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +27,12 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.18.1",
-    "newman": "^6.2.1"
+    "mongoose": "^8.18.1"
   },
   "devDependencies": {
+    "dotenv-cli": "^10.0.0",
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1",
     "nodemon": "^3.1.10"
   },
   "keywords": []

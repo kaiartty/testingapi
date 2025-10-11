@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "9b3a8e1c-3a6f-4a62-9d7c-1234567890ab",
+    "name": "Locations Accuracy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "place", "value": "Chulalongkorn University" },
+    { "key": "refLat", "value": "13.736717" },
+    { "key": "refLng", "value": "100.532" },
+    { "key": "passThresholdMeters", "value": "200" }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const it = pm.iterationData;",
+          "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
+
+          "// ค่าจาก CSV (หรือ fallback จาก variables)",
+          "const placeRaw = String(get('place', pm.variables.get('place')));",
+          "const placeEnc = encodeURIComponent(placeRaw);",
+
+          "// header: ตัวเลขเท่านั้น (ปลอดภัย)",
+          "pm.request.headers.upsert({ key: 'X-Ref-Lat',   value: String(get('refLat', pm.variables.get('refLat'))) });",
+          "pm.request.headers.upsert({ key: 'X-Ref-Lng',   value: String(get('refLng', pm.variables.get('refLng'))) });",
+          "pm.request.headers.upsert({ key: 'X-Threshold', value: String(get('passThresholdMeters', pm.variables.get('passThresholdMeters') || 200)) });",
+
+          "// (ทางเลือก) เก็บ place แบบเข้ารหัส ASCII-safe",
+          "pm.request.headers.upsert({ key: 'X-Place-Enc', value: placeEnc });",
+
+          "// DEBUG (ถ้าต้องการ):",
+          "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
+          "// console.log('HEADERS:', pm.request.headers.toObject());"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "GET Location by place (accuracy test)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function toRad(d){return d*Math.PI/180;}",
+              "function haversine(lat1,lng1,lat2,lng2){",
+              "  const R=6371000;",
+              "  const dLat=toRad(lat2-lat1);",
+              "  const dLng=toRad(lng2-lng1);",
+              "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+              "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+              "  return R*c;",
+              "}",
+              "",
+              "pm.test('Response is 200 and success', function(){",
+              "  pm.response.to.have.status(200);",
+              "  const json = pm.response.json();",
+              "  pm.expect(json.success).to.eql(true);",
+              "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "const apiLat = Number(json.data.lat);",
+              "const apiLng = Number(json.data.lng);",
+              "const refLat = Number(pm.variables.get('refLat'));",
+              "const refLng = Number(pm.variables.get('refLng'));",
+              "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+              "",
+              "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+              "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+              "",
+              "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+              "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+              "});",
+              "",
+              "console.log(`Place: ${pm.variables.get('place')}`);",
+              "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+              "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/locations?place={{place}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "locations"],
+          "query": [{ "key": "place", "value": "{{place}}" }]
+        }
+      },
+      "response": []
+    }
+  ]
+}

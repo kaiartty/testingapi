@@ -3,7 +3,15 @@
 // @access  Public
 exports.getLatlong = async (req, res, next) => {
   try {
-    const latlong = { lat: 40.7128, lng: -74.006 };
+    const place = req.query.place;
+    if (!place) {
+      return res.status(400).json({
+        success: false,
+        message: "Please use ?place=XXX",
+      });
+    }
+
+    const latlong = { lat: 18.796143, lng: 98.979263 };
     res.status(200).json({
       success: true,
       data: latlong,
