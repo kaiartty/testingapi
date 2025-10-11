@@ -1,4 +1,4 @@
-// test/summarize.js  (CommonJS)
+// test/summarize.js  (CommonJS, provider-agnostic)
 const fs = require("fs");
 const path = require("path");
 
@@ -27,7 +27,6 @@ function headerMap(req) {
 
 function getPlaceFrom(ex, idx) {
   const h = headerMap(ex.request || {});
-  // 1) จาก header ที่ encode ไว้
   if (h["x-place-enc"]) {
     try {
       return decodeURIComponent(h["x-place-enc"]);
@@ -35,7 +34,6 @@ function getPlaceFrom(ex, idx) {
       return h["x-place-enc"];
     }
   }
-  // 2) จาก query ใน request URL
   const u = ex.request && ex.request.url;
   if (u && Array.isArray(u.query)) {
     const q = u.query.find((o) => o.key === "place");
@@ -47,8 +45,39 @@ function getPlaceFrom(ex, idx) {
       }
     }
   }
-  // 3) ชื่อ item หรือ case#
   return ex.item?.name || `case#${idx + 1}`;
+}
+
+function nameInParens(str) {
+  const m = String(str || "").match(/\(([^)]+)\)/);
+  return m ? m[1] : null;
+}
+function toKey(s) {
+  const k = String(s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+  return k || "unknown";
+}
+function getProviderKey(ex) {
+  // 1) ตามโจทย์: ใช้ “ชื่อในวงเล็บ” ของ item เป็นหลัก เช่น "GET ... (longdo)"
+  const byParen = nameInParens(ex.item?.name);
+  if (byParen) return toKey(byParen);
+
+  // 2) สำรอง: เดาจาก path .../locations/<provider>
+  const u = ex.request && ex.request.url;
+  const segs = u && Array.isArray(u.path) ? u.path.map(String.toString) : [];
+  const i = segs.indexOf("locations");
+  if (i >= 0 && segs[i + 1]) return toKey(segs[i + 1]);
+
+  // 3) สำรองสุดท้าย: ชื่อ item ทั้งหมด
+  const name = ex.item?.name || "unknown";
+  return toKey(name);
+}
+
+function numOrNull(x) {
+  return Number.isFinite(x) ? x : null;
 }
 
 // ---------- main ----------
@@ -59,16 +88,22 @@ if (!fs.existsSync(RESULT)) {
 
 const data = JSON.parse(fs.readFileSync(RESULT, "utf8"));
 const executions = data.run?.executions || [];
-const out = [];
+
+// ต่อที่: per place (แผนที่ provider -> record)
+const perPlace = new Map();
+// stats ต่อ provider
+const stats = Object.create(null);
 
 executions.forEach((ex, idx) => {
   const h = headerMap(ex.request || {});
   const place = getPlaceFrom(ex, idx);
+  const providerKey = getProviderKey(ex); // เช่น "longdo", "nominatim", "google", ...
+
   const refLat = parseFloat(h["x-ref-lat"]);
   const refLng = parseFloat(h["x-ref-lng"]);
   const threshold = parseFloat(h["x-threshold"]);
 
-  // body -> api lat/lng
+  // parse body
   let apiLat = NaN,
     apiLng = NaN;
   try {
@@ -78,64 +113,104 @@ executions.forEach((ex, idx) => {
     apiLng = Number(body?.data?.lng);
   } catch (_) {}
 
-  let distance = NaN;
-  let pass = false;
-
+  let distance = NaN,
+    pass = false;
   if ([apiLat, apiLng, refLat, refLng].every(Number.isFinite)) {
     distance = haversine(apiLat, apiLng, refLat, refLng);
     pass = Number.isFinite(threshold) ? distance <= threshold : false;
   }
 
-  out.push({
-    place,
-    refLat: Number.isFinite(refLat) ? refLat : null,
-    refLng: Number.isFinite(refLng) ? refLng : null,
-    apiLat: Number.isFinite(apiLat) ? apiLat : null,
-    apiLng: Number.isFinite(apiLng) ? apiLng : null,
-    passThresholdMeters: Number.isFinite(threshold) ? threshold : null,
-    "differenct(m)": Number.isFinite(distance)
-      ? Number(distance.toFixed(2))
-      : null,
+  if (!perPlace.has(place)) perPlace.set(place, { place });
+  const row = perPlace.get(place);
+
+  // เก็บเป็น r_<providerKey>
+  const rec = {
+    refLat: numOrNull(refLat),
+    refLng: numOrNull(refLng),
+    apiLat: numOrNull(apiLat),
+    apiLng: numOrNull(apiLng),
+    passThresholdMeters: numOrNull(threshold),
+    distanceM: Number.isFinite(distance) ? Number(distance.toFixed(2)) : null,
     pass,
-  });
+  };
+  row[`r_${providerKey}`] = rec;
+
+  // stats
+  if (!stats[providerKey]) stats[providerKey] = { total: 0, passed: 0 };
+  stats[providerKey].total += 1;
+  if (pass) stats[providerKey].passed += 1;
 });
 
-// ---------- สรุปผลรวม ----------
-const total = out.length;
-thePassed = out.filter((r) => r.pass).length; // keep variable name consistent below
-const passCount = thePassed;
-const percent = total > 0 ? ((passCount / total) * 100).toFixed(2) : "0.00";
+// เตรียมผล
+const results = Array.from(perPlace.values());
 
-const summaryObj = {
-  total,
-  passed: passCount,
-  failed: total - passCount,
-  passRatePercent: Number(percent),
-  results: out,
+// ทำสรุป s_<provider>
+const summaries = {};
+let totalExec = 0,
+  passedExec = 0;
+for (const [prov, s] of Object.entries(stats)) {
+  const failed = s.total - s.passed;
+  const passRatePercent =
+    s.total > 0 ? Number(((s.passed / s.total) * 100).toFixed(2)) : 0;
+  summaries[`s_${prov}`] = {
+    total: s.total,
+    passed: s.passed,
+    failed,
+    passRatePercent,
+  };
+  totalExec += s.total;
+  passedExec += s.passed;
+}
+const s_overall = {
+  total: totalExec,
+  passed: passedExec,
+  failed: totalExec - passedExec,
+  passRatePercent:
+    totalExec > 0 ? Number(((passedExec / totalExec) * 100).toFixed(2)) : 0,
 };
 
 // ---------- เขียนไฟล์ ----------
+const summaryObj = {
+  s_overall,
+  ...summaries, // <- ได้เป็น s_<provider> อัตโนมัติ
+  results, // <- รายแถวเป็น r_<provider> อัตโนมัติ
+};
 fs.mkdirSync(path.dirname(SUMMARY), { recursive: true });
 fs.writeFileSync(SUMMARY, JSON.stringify(summaryObj, null, 2), "utf8");
 
 // ---------- แสดงบนคอนโซล ----------
+const providers = Object.keys(stats).sort(); // เรียงชื่อ provider
 const pad = (s, n) => String(s ?? "").padEnd(n);
-console.log("\n📊 Accuracy Summary");
-console.log(
-  pad("Place", 30),
-  pad("differenct(m)", 14),
-  pad("Threshold", 10),
-  "Result"
-);
-out.forEach((r) => {
-  const dist = r["differenct(m)"] == null ? "-" : r["differenct(m)"].toFixed(2);
-  const thr = r.passThresholdMeters ?? "-";
-  const res = r.pass ? "✅ PASS" : "❌ FAIL";
-  console.log(pad(r.place, 30), pad(dist, 14), pad(thr, 10), res);
+const fmt = (x) =>
+  x == null ? "-" : typeof x === "number" ? x.toFixed(2) : String(x);
+
+console.log("\n📊 Accuracy Summary (per place, dynamic providers)");
+let header = pad("Place", 30);
+providers.forEach((p) => {
+  header += " " + pad(`${p}:dist(m)`, 14) + pad(`${p}:res`, 8);
+});
+console.log(header);
+
+results.forEach((r) => {
+  let line = pad(r.place, 30);
+  providers.forEach((p) => {
+    const rec = r[`r_${p}`];
+    line +=
+      " " +
+      pad(fmt(rec?.distanceM ?? null), 14) +
+      pad(rec ? (rec.pass ? "PASS" : "FAIL") : "-", 8);
+  });
+  console.log(line);
 });
 
-// ✅ สรุปท้ายสุด
-console.log("\n─────────────── Summary ───────────────");
-console.log(`✅ Passed: ${passCount}/${total}  (${percent}%)`);
-console.log(`💾 Saved: ${SUMMARY}`);
-console.log("──────────────────────────────────────\n");
+console.log("\n─────────────── Provider Summaries ───────────────");
+for (const p of providers) {
+  const s = summaries[`s_${p}`];
+  console.log(
+    `▶ s_${p}: total=${s.total}, passed=${s.passed}, failed=${s.failed}, passRate=${s.passRatePercent}%`
+  );
+}
+console.log(
+  `\n▶ s_overall: total=${s_overall.total}, passed=${s_overall.passed}, failed=${s_overall.failed}, passRate=${s_overall.passRatePercent}%`
+);
+console.log(`\n💾 Saved: ${SUMMARY}\n`);

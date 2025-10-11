@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "geotest:prep": "node -e \"require('fs').mkdirSync('test/results',{recursive:true})\"",
-    "geotest:run": "newman run ./test/test.json --env-var baseUrl=http://localhost:5000 --iteration-data ./test/places.csv --reporters json --reporter-json-export ./test/results/result.json --suppress-exit-code",
+    "geotest:run": "newman run ./test/test.json --env-var baseUrl=http://localhost:5000 --iteration-data ./test/places.csv --reporters json --reporter-json-export ./test/results/result.json --suppress-exit-code --delay-request 300",
     "geotest": "npm run geotest:prep && npm run geotest:run && node ./test/summarize.js"
   },
   "repository": {

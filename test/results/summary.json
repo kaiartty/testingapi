@@ -1,48 +1,253 @@
 {
-  "total": 4,
-  "passed": 1,
-  "failed": 3,
-  "passRatePercent": 25,
+  "s_overall": {
+    "total": 22,
+    "passed": 3,
+    "failed": 19,
+    "passRatePercent": 13.64
+  },
+  "s_longdo": {
+    "total": 11,
+    "passed": 2,
+    "failed": 9,
+    "passRatePercent": 18.18
+  },
+  "s_nominatim": {
+    "total": 11,
+    "passed": 1,
+    "failed": 10,
+    "passRatePercent": 9.09
+  },
   "results": [
     {
       "place": "Chulalongkorn University",
-      "refLat": 13.736717,
-      "refLng": 100.532,
-      "apiLat": 14.520556411120316,
-      "apiLng": 101.01969748735428,
-      "passThresholdMeters": 200,
-      "differenct(m)": 101795.09,
-      "pass": false
+      "r_longdo": {
+        "refLat": 13.738924696907564,
+        "refLng": 100.53217453917102,
+        "apiLat": 14.520556411120316,
+        "apiLng": 101.01969748735428,
+        "passThresholdMeters": 200,
+        "distanceM": 101575.11,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.738924696907564,
+        "refLng": 100.53217453917102,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
     },
     {
       "place": "Wat Arun",
-      "refLat": 13.7437,
-      "refLng": 100.4889,
-      "apiLat": 13.742127484625124,
-      "apiLng": 100.48730585839114,
-      "passThresholdMeters": 200,
-      "differenct(m)": 245.4,
-      "pass": false
+      "r_longdo": {
+        "refLat": 13.744016313773818,
+        "refLng": 100.48843327115911,
+        "apiLat": 13.742127484625124,
+        "apiLng": 100.48730585839114,
+        "passThresholdMeters": 200,
+        "distanceM": 242.78,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.744016313773818,
+        "refLng": 100.48843327115911,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
     },
     {
-      "place": "Chiang Mai University",
-      "refLat": 18.796143,
-      "refLng": 98.979263,
-      "apiLat": 18.807915419561215,
-      "apiLng": 98.95470096283556,
-      "passThresholdMeters": 300,
-      "differenct(m)": 2897.94,
-      "pass": false
+      "place": "ไอดีโอ ท่าพระ",
+      "r_longdo": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": 13.728802769548736,
+        "apiLng": 100.47587424516678,
+        "passThresholdMeters": 300,
+        "distanceM": 63.05,
+        "pass": true
+      },
+      "r_nominatim": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 300,
+        "distanceM": null,
+        "pass": false
+      }
     },
     {
       "place": "ไอคอนสยาม",
-      "refLat": 13.7266,
-      "refLng": 100.5106,
-      "apiLat": 13.726288,
-      "apiLng": 100.509916,
-      "passThresholdMeters": 200,
-      "differenct(m)": 81.62,
-      "pass": true
+      "r_longdo": {
+        "refLat": 13.726886476016979,
+        "refLng": 100.50975470450138,
+        "apiLat": 13.726288,
+        "apiLng": 100.509916,
+        "passThresholdMeters": 200,
+        "distanceM": 68.79,
+        "pass": true
+      },
+      "r_nominatim": {
+        "refLat": 13.726886476016979,
+        "refLng": 100.50975470450138,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "คอนโดไอดีโอท่าพระอินเตอร์เชนจ์",
+      "r_longdo": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "บริษัท อีวาย จำกัด",
+      "r_longdo": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "อีวาย",
+      "r_longdo": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 6.330552,
+        "apiLng": 101.667779,
+        "passThresholdMeters": 200,
+        "distanceM": 831925.71,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "EY",
+      "r_longdo": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 14.034456130920644,
+        "apiLng": 99.52195216309266,
+        "passThresholdMeters": 200,
+        "distanceM": 117058.46,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 14.7403515,
+        "apiLng": 98.6320111,
+        "passThresholdMeters": 200,
+        "distanceM": 236164.2,
+        "pass": false
+      }
+    },
+    {
+      "place": "Bluebik Group Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "bluebik",
+      "r_longdo": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      }
+    },
+    {
+      "place": "บลูบิค",
+      "r_longdo": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false
+      },
+      "r_nominatim": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 200,
+        "distanceM": 21.94,
+        "pass": true
+      }
     }
   ]
 }
