@@ -3,6 +3,7 @@ const { getLatlongLongdo } = require("../controllers/locations");
 
 const router = express.Router();
 
-router.route("/").get(getLatlongLongdo);
+router.route("/longdo").get(getLatlongLongdo);
+
 
 module.exports = router;

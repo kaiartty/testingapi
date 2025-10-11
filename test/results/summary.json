@@ -5,7 +5,7 @@
   "passRatePercent": 25,
   "results": [
     {
-      "place": "Chulalongkorn%20University",
+      "place": "Chulalongkorn University",
       "refLat": 13.736717,
       "refLng": 100.532,
       "apiLat": 14.520556411120316,
@@ -15,7 +15,7 @@
       "pass": false
     },
     {
-      "place": "Wat%20Arun",
+      "place": "Wat Arun",
       "refLat": 13.7437,
       "refLng": 100.4889,
       "apiLat": 13.742127484625124,
@@ -25,7 +25,7 @@
       "pass": false
     },
     {
-      "place": "Chiang%20Mai%20University",
+      "place": "Chiang Mai University",
       "refLat": 18.796143,
       "refLng": 98.979263,
       "apiLat": 18.807915419561215,

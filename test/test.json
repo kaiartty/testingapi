@@ -41,7 +41,7 @@
   ],
   "item": [
     {
-      "name": "GET Location by place (accuracy test)",
+      "name": "GET Location by place (longdo)",
       "event": [
         {
           "listen": "test",
@@ -90,9 +90,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/v1/locations?place={{place}}",
+          "raw": "{{baseUrl}}/api/v1/locations/longdo?place={{place}}",
           "host": ["{{baseUrl}}"],
-          "path": ["api", "v1", "locations"],
+          "path": ["api", "v1", "locations", "longdo"],
           "query": [{ "key": "place", "value": "{{place}}" }]
         }
       },
