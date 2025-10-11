@@ -1,8 +1,8 @@
 const express = require("express");
-const { getLatlong } = require("../controllers/locations");
+const { getLatlongLongdo } = require("../controllers/locations");
 
 const router = express.Router();
 
-router.route("/").get(getLatlong);
+router.route("/").get(getLatlongLongdo);
 
 module.exports = router;
