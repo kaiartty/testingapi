@@ -1,21 +1,603 @@
 {
   "s_overall": {
-    "total": 22,
-    "passed": 3,
-    "failed": 19,
-    "passRatePercent": 13.64
+    "total": 440,
+    "passed": 97,
+    "failed": 343,
+    "passRatePercent": 22.05
   },
   "s_longdo": {
-    "total": 11,
-    "passed": 2,
-    "failed": 9,
+    "total": 88,
+    "passed": 16,
+    "failed": 72,
     "passRatePercent": 18.18
   },
   "s_nominatim": {
-    "total": 11,
-    "passed": 1,
-    "failed": 10,
-    "passRatePercent": 9.09
+    "total": 88,
+    "passed": 20,
+    "failed": 68,
+    "passRatePercent": 22.73
+  },
+  "s_locationiq": {
+    "total": 88,
+    "passed": 21,
+    "failed": 67,
+    "passRatePercent": 23.86
+  },
+  "s_geoapify": {
+    "total": 88,
+    "passed": 21,
+    "failed": 67,
+    "passRatePercent": 23.86
+  },
+  "s_opencage": {
+    "total": 88,
+    "passed": 19,
+    "failed": 69,
+    "passRatePercent": 21.59
+  },
+  "places_found_overall": [
+    "Ascend / TrueMoney",
+    "Ascend Money Company Limited",
+    "Bangkok Bank / BBL",
+    "Bangkok Bank Public Company Limited",
+    "Bitkub Online Company Limited",
+    "Bluebik",
+    "Bluebik Group Public Company Limited",
+    "Chamchuri Square",
+    "Chulalongkorn University",
+    "CIMB Thai",
+    "CIMB Thai Bank Public Company Limited",
+    "Empire Tower",
+    "EY",
+    "FYI Center",
+    "Kasikornbank Public Company Limited",
+    "KBank",
+    "KKP",
+    "KTB",
+    "Lazada",
+    "Lazada Company Limited",
+    "LINE Company (Thailand) Limited",
+    "LINE Thailand",
+    "MFEC",
+    "One Bangkok",
+    "Park Ventures Ecoplex",
+    "Samyan Mitrtown",
+    "SCB",
+    "SCB Park Plaza",
+    "SCB Tech X Company Limited",
+    "SCB TechX",
+    "Sea (Thailand) Company Limited",
+    "Shopee / Sea",
+    "Siam Commercial Bank Public Company Limited",
+    "Silom Complex",
+    "Singha Complex",
+    "The PARQ",
+    "True Digital",
+    "True Digital Group Company Limited",
+    "True Digital Park",
+    "TTB",
+    "United Overseas Bank (Thai) Public Company Limited",
+    "UOB Thai",
+    "Wat Arun",
+    "ซี (ประเทศไทย)",
+    "ทรูดิจิทัล กรุ๊ป",
+    "ธนาคารกรุงเทพ สำนักงานใหญ่",
+    "ธนาคารกรุงไทย สำนักงานใหญ่",
+    "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+    "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+    "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+    "ธนาคารทหารไทยธนชาต",
+    "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+    "ธนาคารยูโอบี สำนักยูโอบี พลาซา กรุงเทพ",
+    "บริษัท อีวาย จำกัด",
+    "บลูบิค",
+    "ลาซาด้า",
+    "ไลน์ ประเทศไทย",
+    "อีวาย",
+    "แอสเซนด์ มันนี่",
+    "ไอคอนสยาม",
+    "ไอดีโอ ท่าพระ"
+  ],
+  "places_found_overall_marked": [
+    "Ascend / TrueMoney",
+    "Ascend Money Company Limited",
+    "Bangkok Bank / BBL",
+    "Bangkok Bank Public Company Limited",
+    "Bitkub Online Company Limited",
+    "Bluebik ✓",
+    "Bluebik Group Public Company Limited ✓",
+    "Chamchuri Square ✓",
+    "Chulalongkorn University ✓",
+    "CIMB Thai",
+    "CIMB Thai Bank Public Company Limited",
+    "Empire Tower ✓",
+    "EY",
+    "FYI Center ✓",
+    "Kasikornbank Public Company Limited",
+    "KBank",
+    "KKP",
+    "KTB",
+    "Lazada ✓",
+    "Lazada Company Limited",
+    "LINE Company (Thailand) Limited",
+    "LINE Thailand ✓",
+    "MFEC",
+    "One Bangkok ✓",
+    "Park Ventures Ecoplex ✓",
+    "Samyan Mitrtown ✓",
+    "SCB ✓",
+    "SCB Park Plaza ✓",
+    "SCB Tech X Company Limited",
+    "SCB TechX",
+    "Sea (Thailand) Company Limited",
+    "Shopee / Sea",
+    "Siam Commercial Bank Public Company Limited",
+    "Silom Complex ✓",
+    "Singha Complex ✓",
+    "The PARQ ✓",
+    "True Digital ✓",
+    "True Digital Group Company Limited",
+    "True Digital Park ✓",
+    "TTB",
+    "United Overseas Bank (Thai) Public Company Limited",
+    "UOB Thai",
+    "Wat Arun ✓",
+    "ซี (ประเทศไทย)",
+    "ทรูดิจิทัล กรุ๊ป",
+    "ธนาคารกรุงเทพ สำนักงานใหญ่ ✓",
+    "ธนาคารกรุงไทย สำนักงานใหญ่ ✓",
+    "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน ✓",
+    "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+    "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+    "ธนาคารทหารไทยธนชาต",
+    "ธนาคารไทยพาณิชย์ สาขารัชโยธิน ✓",
+    "ธนาคารยูโอบี สำนักยูโอบี พลาซา กรุงเทพ",
+    "บริษัท อีวาย จำกัด",
+    "บลูบิค ✓",
+    "ลาซาด้า",
+    "ไลน์ ประเทศไทย",
+    "อีวาย",
+    "แอสเซนด์ มันนี่",
+    "ไอคอนสยาม ✓",
+    "ไอดีโอ ท่าพระ ✓"
+  ],
+  "places_found_by_provider": {
+    "geoapify": [
+      "Ascend / TrueMoney",
+      "Ascend Money Company Limited",
+      "Bangkok Bank / BBL",
+      "Bangkok Bank Public Company Limited",
+      "Bitkub Online Company Limited",
+      "Bluebik",
+      "Bluebik Group Public Company Limited",
+      "Chamchuri Square",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "CIMB Thai Bank Public Company Limited",
+      "Empire Tower",
+      "FYI Center",
+      "Kasikornbank Public Company Limited",
+      "KBank",
+      "KKP",
+      "KTB",
+      "Lazada",
+      "Lazada Company Limited",
+      "LINE Thailand",
+      "MFEC",
+      "One Bangkok",
+      "Park Ventures Ecoplex",
+      "Samyan Mitrtown",
+      "SCB",
+      "SCB Park Plaza",
+      "SCB Tech X Company Limited",
+      "SCB TechX",
+      "Sea (Thailand) Company Limited",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex",
+      "Singha Complex",
+      "The PARQ",
+      "True Digital",
+      "True Digital Group Company Limited",
+      "True Digital Park",
+      "TTB",
+      "United Overseas Bank (Thai) Public Company Limited",
+      "UOB Thai",
+      "Wat Arun",
+      "ซี (ประเทศไทย)",
+      "ทรูดิจิทัล กรุ๊ป",
+      "ธนาคารกรุงเทพ สำนักงานใหญ่",
+      "ธนาคารกรุงไทย สำนักงานใหญ่",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+      "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค",
+      "ลาซาด้า",
+      "อีวาย",
+      "ไอคอนสยาม",
+      "ไอดีโอ ท่าพระ"
+    ],
+    "locationiq": [
+      "Ascend / TrueMoney",
+      "Bangkok Bank Public Company Limited",
+      "Bluebik",
+      "Bluebik Group Public Company Limited",
+      "Chamchuri Square",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "Empire Tower",
+      "EY",
+      "FYI Center",
+      "KBank",
+      "KKP",
+      "KTB",
+      "Lazada",
+      "LINE Company (Thailand) Limited",
+      "LINE Thailand",
+      "MFEC",
+      "One Bangkok",
+      "Park Ventures Ecoplex",
+      "Samyan Mitrtown",
+      "SCB",
+      "SCB Park Plaza",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex",
+      "Singha Complex",
+      "The PARQ",
+      "True Digital",
+      "True Digital Park",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun",
+      "ซี (ประเทศไทย)",
+      "ทรูดิจิทัล กรุ๊ป",
+      "ธนาคารกรุงเทพ สำนักงานใหญ่",
+      "ธนาคารกรุงไทย สำนักงานใหญ่",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+      "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "อีวาย",
+      "แอสเซนด์ มันนี่",
+      "ไอคอนสยาม",
+      "ไอดีโอ ท่าพระ"
+    ],
+    "longdo": [
+      "Bangkok Bank Public Company Limited",
+      "Chamchuri Square",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "CIMB Thai Bank Public Company Limited",
+      "Empire Tower",
+      "EY",
+      "FYI Center",
+      "KKP",
+      "KTB",
+      "Lazada",
+      "LINE Thailand",
+      "MFEC",
+      "Samyan Mitrtown",
+      "SCB",
+      "SCB Park Plaza",
+      "Silom Complex",
+      "Singha Complex",
+      "The PARQ",
+      "True Digital",
+      "True Digital Park",
+      "TTB",
+      "United Overseas Bank (Thai) Public Company Limited",
+      "Wat Arun",
+      "ซี (ประเทศไทย)",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "อีวาย",
+      "ไอคอนสยาม",
+      "ไอดีโอ ท่าพระ"
+    ],
+    "nominatim": [
+      "Bangkok Bank Public Company Limited",
+      "Bluebik",
+      "Bluebik Group Public Company Limited",
+      "Chamchuri Square",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "Empire Tower",
+      "EY",
+      "FYI Center",
+      "KBank",
+      "KTB",
+      "Lazada",
+      "LINE Thailand",
+      "One Bangkok",
+      "Park Ventures Ecoplex",
+      "Samyan Mitrtown",
+      "SCB",
+      "SCB Park Plaza",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex",
+      "Singha Complex",
+      "The PARQ",
+      "True Digital",
+      "True Digital Park",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun",
+      "ซี (ประเทศไทย)",
+      "ธนาคารทหารไทยธนชาต",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "ไอคอนสยาม"
+    ],
+    "opencage": [
+      "Bangkok Bank Public Company Limited",
+      "Bluebik",
+      "Bluebik Group Public Company Limited",
+      "Chamchuri Square",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "Empire Tower",
+      "EY",
+      "FYI Center",
+      "KTB",
+      "Lazada",
+      "LINE Thailand",
+      "One Bangkok",
+      "Park Ventures Ecoplex",
+      "Samyan Mitrtown",
+      "SCB",
+      "SCB Park Plaza",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex",
+      "Singha Complex",
+      "The PARQ",
+      "True Digital",
+      "True Digital Park",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun",
+      "ซี (ประเทศไทย)",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารยูโอบี สำนักยูโอบี พลาซา กรุงเทพ",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "ไอคอนสยาม"
+    ]
+  },
+  "places_found_by_provider_marked": {
+    "geoapify": [
+      "Ascend / TrueMoney",
+      "Ascend Money Company Limited",
+      "Bangkok Bank / BBL",
+      "Bangkok Bank Public Company Limited",
+      "Bitkub Online Company Limited",
+      "Bluebik ✓",
+      "Bluebik Group Public Company Limited ✓",
+      "Chamchuri Square ✓",
+      "Chulalongkorn University ✓",
+      "CIMB Thai",
+      "CIMB Thai Bank Public Company Limited",
+      "Empire Tower ✓",
+      "FYI Center ✓",
+      "Kasikornbank Public Company Limited",
+      "KBank",
+      "KKP",
+      "KTB",
+      "Lazada ✓",
+      "Lazada Company Limited",
+      "LINE Thailand ✓",
+      "MFEC",
+      "One Bangkok ✓",
+      "Park Ventures Ecoplex ✓",
+      "Samyan Mitrtown ✓",
+      "SCB",
+      "SCB Park Plaza ✓",
+      "SCB Tech X Company Limited",
+      "SCB TechX",
+      "Sea (Thailand) Company Limited",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex ✓",
+      "Singha Complex ✓",
+      "The PARQ ✓",
+      "True Digital ✓",
+      "True Digital Group Company Limited",
+      "True Digital Park ✓",
+      "TTB",
+      "United Overseas Bank (Thai) Public Company Limited",
+      "UOB Thai",
+      "Wat Arun ✓",
+      "ซี (ประเทศไทย)",
+      "ทรูดิจิทัล กรุ๊ป",
+      "ธนาคารกรุงเทพ สำนักงานใหญ่",
+      "ธนาคารกรุงไทย สำนักงานใหญ่ ✓",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+      "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค ✓",
+      "ลาซาด้า",
+      "อีวาย",
+      "ไอคอนสยาม ✓",
+      "ไอดีโอ ท่าพระ"
+    ],
+    "locationiq": [
+      "Ascend / TrueMoney",
+      "Bangkok Bank Public Company Limited",
+      "Bluebik ✓",
+      "Bluebik Group Public Company Limited ✓",
+      "Chamchuri Square ✓",
+      "Chulalongkorn University ✓",
+      "CIMB Thai",
+      "Empire Tower ✓",
+      "EY",
+      "FYI Center ✓",
+      "KBank",
+      "KKP",
+      "KTB",
+      "Lazada",
+      "LINE Company (Thailand) Limited",
+      "LINE Thailand ✓",
+      "MFEC",
+      "One Bangkok ✓",
+      "Park Ventures Ecoplex ✓",
+      "Samyan Mitrtown ✓",
+      "SCB",
+      "SCB Park Plaza ✓",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex ✓",
+      "Singha Complex ✓",
+      "The PARQ ✓",
+      "True Digital ✓",
+      "True Digital Park ✓",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun ✓",
+      "ซี (ประเทศไทย)",
+      "ทรูดิจิทัล กรุ๊ป",
+      "ธนาคารกรุงเทพ สำนักงานใหญ่ ✓",
+      "ธนาคารกรุงไทย สำนักงานใหญ่",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+      "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค ✓",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "อีวาย",
+      "แอสเซนด์ มันนี่",
+      "ไอคอนสยาม ✓",
+      "ไอดีโอ ท่าพระ ✓"
+    ],
+    "longdo": [
+      "Bangkok Bank Public Company Limited",
+      "Chamchuri Square ✓",
+      "Chulalongkorn University",
+      "CIMB Thai",
+      "CIMB Thai Bank Public Company Limited",
+      "Empire Tower ✓",
+      "EY",
+      "FYI Center ✓",
+      "KKP",
+      "KTB",
+      "Lazada",
+      "LINE Thailand",
+      "MFEC",
+      "Samyan Mitrtown ✓",
+      "SCB ✓",
+      "SCB Park Plaza ✓",
+      "Silom Complex ✓",
+      "Singha Complex ✓",
+      "The PARQ ✓",
+      "True Digital ✓",
+      "True Digital Park ✓",
+      "TTB",
+      "United Overseas Bank (Thai) Public Company Limited",
+      "Wat Arun ✓",
+      "ซี (ประเทศไทย)",
+      "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน ✓",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารไทยพาณิชย์ สาขารัชโยธิน ✓",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "อีวาย",
+      "ไอคอนสยาม ✓",
+      "ไอดีโอ ท่าพระ ✓"
+    ],
+    "nominatim": [
+      "Bangkok Bank Public Company Limited",
+      "Bluebik ✓",
+      "Bluebik Group Public Company Limited ✓",
+      "Chamchuri Square ✓",
+      "Chulalongkorn University ✓",
+      "CIMB Thai",
+      "Empire Tower ✓",
+      "EY",
+      "FYI Center ✓",
+      "KBank",
+      "KTB",
+      "Lazada ✓",
+      "LINE Thailand ✓",
+      "One Bangkok ✓",
+      "Park Ventures Ecoplex ✓",
+      "Samyan Mitrtown ✓",
+      "SCB",
+      "SCB Park Plaza ✓",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex ✓",
+      "Singha Complex ✓",
+      "The PARQ ✓",
+      "True Digital ✓",
+      "True Digital Park ✓",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun ✓",
+      "ซี (ประเทศไทย)",
+      "ธนาคารทหารไทยธนชาต",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค ✓",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "ไอคอนสยาม ✓"
+    ],
+    "opencage": [
+      "Bangkok Bank Public Company Limited",
+      "Bluebik ✓",
+      "Bluebik Group Public Company Limited ✓",
+      "Chamchuri Square ✓",
+      "Chulalongkorn University ✓",
+      "CIMB Thai",
+      "Empire Tower ✓",
+      "EY",
+      "FYI Center ✓",
+      "KTB",
+      "Lazada",
+      "LINE Thailand ✓",
+      "One Bangkok ✓",
+      "Park Ventures Ecoplex ✓",
+      "Samyan Mitrtown ✓",
+      "SCB",
+      "SCB Park Plaza ✓",
+      "Shopee / Sea",
+      "Siam Commercial Bank Public Company Limited",
+      "Silom Complex ✓",
+      "Singha Complex ✓",
+      "The PARQ ✓",
+      "True Digital ✓",
+      "True Digital Park ✓",
+      "TTB",
+      "UOB Thai",
+      "Wat Arun ✓",
+      "ซี (ประเทศไทย)",
+      "ธนาคารทหารไทยธนชาต",
+      "ธนาคารยูโอบี สำนักยูโอบี พลาซา กรุงเทพ",
+      "บริษัท อีวาย จำกัด",
+      "บลูบิค ✓",
+      "ลาซาด้า",
+      "ไลน์ ประเทศไทย",
+      "ไอคอนสยาม ✓"
+    ]
   },
   "results": [
     {
@@ -25,18 +607,50 @@
         "refLng": 100.53217453917102,
         "apiLat": 14.520556411120316,
         "apiLng": 101.01969748735428,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 101575.11,
-        "pass": false
+        "pass": false,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.738924696907564,
         "refLng": 100.53217453917102,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.7431114,
+        "apiLng": 100.5328752,
+        "passThresholdMeters": 500,
+        "distanceM": 471.65,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.738924696907564,
+        "refLng": 100.53217453917102,
+        "apiLat": 13.7431114,
+        "apiLng": 100.53287523228792,
+        "passThresholdMeters": 500,
+        "distanceM": 471.65,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.738924696907564,
+        "refLng": 100.53217453917102,
+        "apiLat": 13.7431114,
+        "apiLng": 100.53287523228792,
+        "passThresholdMeters": 500,
+        "distanceM": 471.65,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.738924696907564,
+        "refLng": 100.53217453917102,
+        "apiLat": 13.7431114,
+        "apiLng": 100.5328752,
+        "passThresholdMeters": 500,
+        "distanceM": 471.65,
+        "pass": true,
+        "statusCode": 200
       }
     },
     {
@@ -46,18 +660,50 @@
         "refLng": 100.48843327115911,
         "apiLat": 13.742127484625124,
         "apiLng": 100.48730585839114,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 242.78,
-        "pass": false
+        "pass": true,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.744016313773818,
         "refLng": 100.48843327115911,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.7438976,
+        "apiLng": 100.4885137,
+        "passThresholdMeters": 500,
+        "distanceM": 15.8,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.744016313773818,
+        "refLng": 100.48843327115911,
+        "apiLat": 13.7438976,
+        "apiLng": 100.48851370084745,
+        "passThresholdMeters": 500,
+        "distanceM": 15.8,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.744016313773818,
+        "refLng": 100.48843327115911,
+        "apiLat": 13.7438976,
+        "apiLng": 100.48851370084745,
+        "passThresholdMeters": 500,
+        "distanceM": 15.8,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.744016313773818,
+        "refLng": 100.48843327115911,
+        "apiLat": 13.7438976,
+        "apiLng": 100.4885137,
+        "passThresholdMeters": 500,
+        "distanceM": 15.8,
+        "pass": true,
+        "statusCode": 200
       }
     },
     {
@@ -67,18 +713,50 @@
         "refLng": 100.47581555766224,
         "apiLat": 13.728802769548736,
         "apiLng": 100.47587424516678,
-        "passThresholdMeters": 300,
+        "passThresholdMeters": 500,
         "distanceM": 63.05,
-        "pass": true
+        "pass": true,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.729366880338349,
         "refLng": 100.47581555766224,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 300,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": 13.729656,
+        "apiLng": 100.474086,
+        "passThresholdMeters": 500,
+        "distanceM": 189.57,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": 13.71360305,
+        "apiLng": 100.47997883144026,
+        "passThresholdMeters": 500,
+        "distanceM": 1809.63,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
       }
     },
     {
@@ -88,18 +766,50 @@
         "refLng": 100.50975470450138,
         "apiLat": 13.726288,
         "apiLng": 100.509916,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 68.79,
-        "pass": true
+        "pass": true,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.726886476016979,
         "refLng": 100.50975470450138,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.7268226,
+        "apiLng": 100.510294,
+        "passThresholdMeters": 500,
+        "distanceM": 58.69,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.726886476016979,
+        "refLng": 100.50975470450138,
+        "apiLat": 13.726822649999999,
+        "apiLng": 100.51029400401069,
+        "passThresholdMeters": 500,
+        "distanceM": 58.69,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.726886476016979,
+        "refLng": 100.50975470450138,
+        "apiLat": 13.726822649999999,
+        "apiLng": 100.51029400401069,
+        "passThresholdMeters": 500,
+        "distanceM": 58.69,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.726886476016979,
+        "refLng": 100.50975470450138,
+        "apiLat": 13.7268226,
+        "apiLng": 100.510294,
+        "passThresholdMeters": 500,
+        "distanceM": 58.69,
+        "pass": true,
+        "statusCode": 200
       }
     },
     {
@@ -109,18 +819,50 @@
         "refLng": 100.47581555766224,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
       },
       "r_nominatim": {
         "refLat": 13.729366880338349,
         "refLng": 100.47581555766224,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.729366880338349,
+        "refLng": 100.47581555766224,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
       }
     },
     {
@@ -130,18 +872,50 @@
         "refLng": 100.56080997605484,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
       },
       "r_nominatim": {
         "refLat": 13.732528804532828,
         "refLng": 100.56080997605484,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.7504298,
+        "apiLng": 100.5670149,
+        "passThresholdMeters": 500,
+        "distanceM": 2100.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 13.750429749999999,
+        "apiLng": 100.56701493139612,
+        "passThresholdMeters": 500,
+        "distanceM": 2100.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 13.750429749999999,
+        "apiLng": 100.56701493139612,
+        "passThresholdMeters": 500,
+        "distanceM": 2100.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 13.7504297,
+        "apiLng": 100.5670149,
+        "passThresholdMeters": 500,
+        "distanceM": 2100.29,
+        "pass": false,
+        "statusCode": 200
       }
     },
     {
@@ -151,18 +925,50 @@
         "refLng": 100.56080997605484,
         "apiLat": 6.330552,
         "apiLng": 101.667779,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 831925.71,
-        "pass": false
+        "pass": false,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.732528804532828,
         "refLng": 100.56080997605484,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 51.3110991,
+        "apiLng": 12.3464912,
+        "passThresholdMeters": 500,
+        "distanceM": 8697262.44,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 24.89840717282973,
+        "apiLng": 121.26030175166039,
+        "passThresholdMeters": 500,
+        "distanceM": 2496688.61,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
       }
     },
     {
@@ -172,18 +978,433 @@
         "refLng": 100.56080997605484,
         "apiLat": 14.034456130920644,
         "apiLng": 99.52195216309266,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 117058.46,
-        "pass": false
+        "pass": false,
+        "statusCode": 200
       },
       "r_nominatim": {
         "refLat": 13.732528804532828,
         "refLng": 100.56080997605484,
         "apiLat": 14.7403515,
         "apiLng": 98.6320111,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 236164.2,
-        "pass": false
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 53.826893,
+        "apiLng": 102.613876,
+        "passThresholdMeters": 500,
+        "distanceM": 4461929.45,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.732528804532828,
+        "refLng": 100.56080997605484,
+        "apiLat": 47.12515,
+        "apiLng": 7.55254,
+        "passThresholdMeters": 500,
+        "distanceM": 9117281.15,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "GET Location by place (longdo)",
+      "r_longdo": {
+        "refLat": 13.736717,
+        "refLng": 100.532,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 400
+      }
+    },
+    {
+      "place": "GET Location by place (nominatim)",
+      "r_nominatim": {
+        "refLat": 13.736717,
+        "refLng": 100.532,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 400
+      }
+    },
+    {
+      "place": "GET Location by place (locationiq)",
+      "r_locationiq": {
+        "refLat": 13.736717,
+        "refLng": 100.532,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 400
+      }
+    },
+    {
+      "place": "GET Location by place (geoapify)",
+      "r_geoapify": {
+        "refLat": 13.736717,
+        "refLng": 100.532,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 400
+      }
+    },
+    {
+      "place": "GET Location by place (opencage)",
+      "r_opencage": {
+        "refLat": 13.736717,
+        "refLng": 100.532,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 200,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 400
+      }
+    },
+    {
+      "place": "SCB Tech X Company Limited",
+      "r_longdo": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": 13.7187525,
+        "apiLng": 100.3781091,
+        "passThresholdMeters": 500,
+        "distanceM": 23442.02,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "เอสซีบี เทคเอกซ์",
+      "r_longdo": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "SCB TechX",
+      "r_longdo": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": 13.7187525,
+        "apiLng": 100.3781091,
+        "passThresholdMeters": 500,
+        "distanceM": 23442.02,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.82815140243857,
+        "refLng": 100.56365721828978,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "True Digital Group Company Limited",
+      "r_longdo": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": -12.789063,
+        "apiLng": 45.27028,
+        "passThresholdMeters": 500,
+        "distanceM": 6770875.64,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ทรูดิจิทัล กรุ๊ป",
+      "r_longdo": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.830395,
+        "apiLng": 100.759575,
+        "passThresholdMeters": 500,
+        "distanceM": 22664.14,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.76740705,
+        "apiLng": 100.58420793122089,
+        "passThresholdMeters": 500,
+        "distanceM": 9540.04,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "True Digital",
+      "r_longdo": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.68527125,
+        "apiLng": 100.61108641,
+        "passThresholdMeters": 500,
+        "distanceM": 86.86,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.685625,
+        "apiLng": 100.6115582,
+        "passThresholdMeters": 500,
+        "distanceM": 26.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.685625,
+        "apiLng": 100.61155823695478,
+        "passThresholdMeters": 500,
+        "distanceM": 26.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.685580999999999,
+        "apiLng": 100.61130765066844,
+        "passThresholdMeters": 500,
+        "distanceM": 45.6,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685850415519397,
+        "refLng": 100.61162584253468,
+        "apiLat": 13.685581,
+        "apiLng": 100.6113077,
+        "passThresholdMeters": 500,
+        "distanceM": 45.59,
+        "pass": true,
+        "statusCode": 200
       }
     },
     {
@@ -193,39 +1414,50 @@
         "refLng": 100.52866116985936,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
       },
       "r_nominatim": {
         "refLat": 13.726050296330259,
         "refLng": 100.52866116985936,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
-      }
-    },
-    {
-      "place": "bluebik",
-      "r_longdo": {
-        "refLat": 13.726050296330259,
-        "refLng": 100.52866116985936,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 500,
+        "distanceM": 21.94,
+        "pass": true,
+        "statusCode": 200
       },
-      "r_nominatim": {
+      "r_locationiq": {
         "refLat": 13.726050296330259,
         "refLng": 100.52866116985936,
-        "apiLat": null,
-        "apiLng": null,
-        "passThresholdMeters": 200,
-        "distanceM": null,
-        "pass": false
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 500,
+        "distanceM": 21.94,
+        "pass": true,
+        "statusCode": 200
       }
     },
     {
@@ -235,18 +1467,2912 @@
         "refLng": 100.52866116985936,
         "apiLat": null,
         "apiLng": null,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": null,
-        "pass": false
+        "pass": false,
+        "statusCode": 404
       },
       "r_nominatim": {
         "refLat": 13.726050296330259,
         "refLng": 100.52866116985936,
         "apiLat": 13.7258564,
         "apiLng": 100.528699,
-        "passThresholdMeters": 200,
+        "passThresholdMeters": 500,
         "distanceM": 21.94,
-        "pass": true
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 500,
+        "distanceM": 21.94,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Bluebik",
+      "r_longdo": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 500,
+        "distanceM": 21.94,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.72585635,
+        "apiLng": 100.52869895518413,
+        "passThresholdMeters": 500,
+        "distanceM": 21.95,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.726050296330259,
+        "refLng": 100.52866116985936,
+        "apiLat": 13.7258564,
+        "apiLng": 100.528699,
+        "passThresholdMeters": 500,
+        "distanceM": 21.94,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Bitkub Online Company Limited",
+      "r_longdo": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": 55.523437,
+        "apiLng": 28.678074,
+        "passThresholdMeters": 500,
+        "distanceM": 7616582.18,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "บิทคับ",
+      "r_longdo": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Bitkub",
+      "r_longdo": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.721058747917558,
+        "refLng": 100.56037424536945,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "LINE Company (Thailand) Limited",
+      "r_longdo": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 18.793415,
+        "apiLng": 98.972609,
+        "passThresholdMeters": 500,
+        "distanceM": 585578.66,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ไลน์ ประเทศไทย",
+      "r_longdo": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.72857347668612,
+        "apiLng": 100.52821619899426,
+        "passThresholdMeters": 500,
+        "distanceM": 2447.99,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.7254259,
+        "apiLng": 100.575636,
+        "passThresholdMeters": 500,
+        "distanceM": 4436.11,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 6.668579,
+        "apiLng": 100.319238,
+        "passThresholdMeters": 500,
+        "distanceM": 787434.07,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.7254259,
+        "apiLng": 100.575636,
+        "passThresholdMeters": 500,
+        "distanceM": 4436.11,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "LINE Thailand",
+      "r_longdo": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.052323774925409,
+        "apiLng": 101.20856523513794,
+        "passThresholdMeters": 500,
+        "distanceM": 105725.65,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.7460621,
+        "apiLng": 100.540862,
+        "passThresholdMeters": 500,
+        "distanceM": 81.03,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.7460621,
+        "apiLng": 100.540862,
+        "passThresholdMeters": 500,
+        "distanceM": 81.03,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.746062,
+        "apiLng": 100.540862,
+        "passThresholdMeters": 500,
+        "distanceM": 81.04,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.746785923636699,
+        "refLng": 100.5409489686662,
+        "apiLat": 13.7460621,
+        "apiLng": 100.540862,
+        "passThresholdMeters": 500,
+        "distanceM": 81.03,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Lazada Company Limited",
+      "r_longdo": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 29.414081,
+        "apiLng": -98.770936,
+        "passThresholdMeters": 500,
+        "distanceM": 14787718.74,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ลาซาด้า",
+      "r_longdo": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 14.217265,
+        "apiLng": 101.193751,
+        "passThresholdMeters": 500,
+        "distanceM": 86279.04,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 13.8006599,
+        "apiLng": 100.549304,
+        "passThresholdMeters": 500,
+        "distanceM": 7981.15,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 50.4291723,
+        "apiLng": 2.8319805,
+        "passThresholdMeters": 500,
+        "distanceM": 9371567.05,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": -13.289402,
+        "apiLng": -176.204224,
+        "passThresholdMeters": 500,
+        "distanceM": 9644506.13,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": -13.289402,
+        "apiLng": -176.204224,
+        "passThresholdMeters": 500,
+        "distanceM": 9644506.13,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Lazada",
+      "r_longdo": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 16.421750101649543,
+        "apiLng": 101.15657329559326,
+        "passThresholdMeters": 500,
+        "distanceM": 305669.37,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 13.7324714,
+        "apiLng": 100.569767,
+        "passThresholdMeters": 500,
+        "distanceM": 83.53,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 29.4140563,
+        "apiLng": -98.7708458,
+        "passThresholdMeters": 500,
+        "distanceM": 14787725.05,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 13.7324714,
+        "apiLng": 100.569767,
+        "passThresholdMeters": 500,
+        "distanceM": 83.53,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.731762019230862,
+        "refLng": 100.57002131468823,
+        "apiLat": 23.0965092,
+        "apiLng": -82.3837544,
+        "passThresholdMeters": 500,
+        "distanceM": 15907368.77,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Sea (Thailand) Company Limited",
+      "r_longdo": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 13.1474759,
+        "apiLng": 100.9622271,
+        "passThresholdMeters": 500,
+        "distanceM": 79741.75,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ซี (ประเทศไทย)",
+      "r_longdo": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 13.7062775236786,
+        "apiLng": 100.527688928765,
+        "passThresholdMeters": 500,
+        "distanceM": 6332.46,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 16.4466126,
+        "apiLng": 102.6795726,
+        "passThresholdMeters": 500,
+        "distanceM": 376052.37,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 13.8056747,
+        "apiLng": 100.2834246,
+        "passThresholdMeters": 500,
+        "distanceM": 30901.19,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 16.44661255,
+        "apiLng": 102.67957257826212,
+        "passThresholdMeters": 500,
+        "distanceM": 376052.36,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": 16.4466126,
+        "apiLng": 102.6795726,
+        "passThresholdMeters": 500,
+        "distanceM": 376052.37,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Shopee / Sea",
+      "r_longdo": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": -23.6891341,
+        "apiLng": -46.566646733857326,
+        "passThresholdMeters": 500,
+        "distanceM": 16391830.21,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": -23.6891341,
+        "apiLng": -46.566646733857326,
+        "passThresholdMeters": 500,
+        "distanceM": 16391830.21,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.751011008170185,
+        "refLng": 100.56396927871808,
+        "apiLat": -23.6891341,
+        "apiLng": -46.5666467,
+        "passThresholdMeters": 500,
+        "distanceM": 16391830.21,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Ascend Money Company Limited",
+      "r_longdo": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": 40.450841,
+        "apiLng": -79.895882,
+        "passThresholdMeters": 500,
+        "distanceM": 13995134.22,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "แอสเซนด์ มันนี่",
+      "r_longdo": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": 15.497289,
+        "apiLng": 100.128412,
+        "passThresholdMeters": 500,
+        "distanceM": 208024.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Ascend / TrueMoney",
+      "r_longdo": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": 21.045974,
+        "apiLng": 105.804937,
+        "passThresholdMeters": 500,
+        "distanceM": 986411.25,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": 13.8768218,
+        "apiLng": 120.9151205,
+        "passThresholdMeters": 500,
+        "distanceM": 2192103.55,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685843230149315,
+        "refLng": 100.61154900672912,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "MFEC Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "เอ็มเอฟอีซี",
+      "r_longdo": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "MFEC",
+      "r_longdo": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": 13.7304143997003,
+        "apiLng": 100.642088833146,
+        "passThresholdMeters": 500,
+        "distanceM": 12660.2,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": -23.53340405,
+        "apiLng": -46.73921394203097,
+        "passThresholdMeters": 500,
+        "distanceM": 16414514.86,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": -23.53340405,
+        "apiLng": -46.73921394203097,
+        "passThresholdMeters": 500,
+        "distanceM": 16414514.86,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.810136283957718,
+        "refLng": 100.55839626867862,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Siam Commercial Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 14786.27,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 14786.27,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 14786.27,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 14786.27,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "ธนาคารไทยพาณิชย์ สาขารัชโยธิน",
+      "r_longdo": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.826796,
+        "apiLng": 100.564323,
+        "passThresholdMeters": 500,
+        "distanceM": 124.98,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.732081,
+        "apiLng": 100.512686,
+        "passThresholdMeters": 500,
+        "distanceM": 12040.45,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7319216,
+        "apiLng": 100.51278204954801,
+        "passThresholdMeters": 500,
+        "distanceM": 12051.24,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "SCB",
+      "r_longdo": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.827780456543,
+        "apiLng": 100.564919882965,
+        "passThresholdMeters": 500,
+        "distanceM": 14.89,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 13.7552722,
+        "apiLng": 100.617368,
+        "passThresholdMeters": 500,
+        "distanceM": 9838.6,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 41.6118831,
+        "apiLng": -96.62951725385125,
+        "passThresholdMeters": 500,
+        "distanceM": 13602724.94,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 19.9139594,
+        "apiLng": 99.20850293151429,
+        "passThresholdMeters": 500,
+        "distanceM": 691966.58,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.82769133095675,
+        "refLng": 100.5650228368812,
+        "apiLat": 41.66667,
+        "apiLng": -96.66586,
+        "passThresholdMeters": 500,
+        "distanceM": 13595969.05,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Kasikornbank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 17.4043735,
+        "apiLng": 102.8040501,
+        "passThresholdMeters": 500,
+        "distanceM": 469678.42,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารกสิกรไทย สาขาสำนักพหลโยธิน",
+      "r_longdo": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.781728455850843,
+        "apiLng": 100.54584024326884,
+        "passThresholdMeters": 500,
+        "distanceM": 147.52,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.736156,
+        "apiLng": 100.641992,
+        "passThresholdMeters": 500,
+        "distanceM": 11562.81,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.1546542,
+        "apiLng": 100.9816436,
+        "passThresholdMeters": 500,
+        "distanceM": 84238.69,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "KBank",
+      "r_longdo": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.7966529,
+        "apiLng": 100.564797,
+        "passThresholdMeters": 500,
+        "distanceM": 2505.45,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.7966529,
+        "apiLng": 100.564797,
+        "passThresholdMeters": 500,
+        "distanceM": 2505.45,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": 13.7278492,
+        "apiLng": 100.77075,
+        "passThresholdMeters": 500,
+        "distanceM": 24995.39,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.782945915025403,
+        "refLng": 100.54638293681636,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Bangkok Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.579011244037412,
+        "apiLng": 100.6028205016286,
+        "passThresholdMeters": 500,
+        "distanceM": 18222.78,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 10385.35,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.7667387,
+        "apiLng": 100.4433276,
+        "passThresholdMeters": 500,
+        "distanceM": 10385.35,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.787695,
+        "apiLng": 100.6779084,
+        "passThresholdMeters": 500,
+        "distanceM": 17309.52,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.787695,
+        "apiLng": 100.6779084,
+        "passThresholdMeters": 500,
+        "distanceM": 17309.52,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "ธนาคารกรุงเทพ สำนักงานใหญ่",
+      "r_longdo": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.726442,
+        "apiLng": 100.530338,
+        "passThresholdMeters": 500,
+        "distanceM": 60.12,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 13.7618717,
+        "apiLng": 100.5697783,
+        "passThresholdMeters": 500,
+        "distanceM": 5762.09,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Bangkok Bank / BBL",
+      "r_longdo": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": 25.715305,
+        "apiLng": -100.281687,
+        "passThresholdMeters": 500,
+        "distanceM": 15084269.33,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.72698268100814,
+        "refLng": 100.53033374669543,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "Krungthai Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารกรุงไทย สำนักงานใหญ่",
+      "r_longdo": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 13.726442,
+        "apiLng": 100.530338,
+        "passThresholdMeters": 500,
+        "distanceM": 2859.63,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 13.7419831,
+        "apiLng": 100.55113019688679,
+        "passThresholdMeters": 500,
+        "distanceM": 29.65,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "KTB",
+      "r_longdo": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 6.865838729246468,
+        "apiLng": 101.24313086271286,
+        "passThresholdMeters": 500,
+        "distanceM": 768352.33,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 13.7260035,
+        "apiLng": 100.5276354,
+        "passThresholdMeters": 500,
+        "distanceM": 3123.18,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": -2.7951096499999997,
+        "apiLng": 115.97125475603532,
+        "passThresholdMeters": 500,
+        "distanceM": 2504722.31,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 49.8156599,
+        "apiLng": 12.120452438105428,
+        "passThresholdMeters": 500,
+        "distanceM": 8733476.55,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.742228627065227,
+        "refLng": 100.55123730574391,
+        "apiLat": 55.68778,
+        "apiLng": -132.52222,
+        "passThresholdMeters": 500,
+        "distanceM": 10855848.48,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "TMBThanachart Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารทหารไทยธนชาต",
+      "r_longdo": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 7.619764,
+        "apiLng": 100.084267,
+        "passThresholdMeters": 500,
+        "distanceM": 683014.42,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 12.5627491,
+        "apiLng": 99.9597725,
+        "passThresholdMeters": 500,
+        "distanceM": 145535.16,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 12.5627491,
+        "apiLng": 99.9597725,
+        "passThresholdMeters": 500,
+        "distanceM": 145535.16,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 12.5627491,
+        "apiLng": 99.9597725,
+        "passThresholdMeters": 500,
+        "distanceM": 145535.16,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 12.5627491,
+        "apiLng": 99.9597725,
+        "passThresholdMeters": 500,
+        "distanceM": 145535.16,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "TTB",
+      "r_longdo": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 17.391484,
+        "apiLng": 102.799931,
+        "passThresholdMeters": 500,
+        "distanceM": 472436.65,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 13.7943307,
+        "apiLng": 100.6513869,
+        "passThresholdMeters": 500,
+        "distanceM": 13811.15,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 35.6886281,
+        "apiLng": 139.8078685,
+        "passThresholdMeters": 500,
+        "distanceM": 4610717.29,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 14.59342375,
+        "apiLng": 100.45125855,
+        "passThresholdMeters": 500,
+        "distanceM": 94600.26,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.7464,
+        "refLng": 100.53341,
+        "apiLat": 39.93025,
+        "apiLng": 9.67025,
+        "passThresholdMeters": 500,
+        "distanceM": 9104300.25,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "CIMB Thai Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.74049500801222,
+        "apiLng": 100.5431520798916,
+        "passThresholdMeters": 500,
+        "distanceM": 630.42,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.730017,
+        "apiLng": 100.532309,
+        "passThresholdMeters": 500,
+        "distanceM": 2278.71,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารซีไอเอ็มบีไทย สำนักงานใหญ่ ถนนหลังสวน",
+      "r_longdo": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 6.38713,
+        "apiLng": 101.517889,
+        "passThresholdMeters": 500,
+        "distanceM": 824896.64,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.734762,
+        "apiLng": 100.542334,
+        "passThresholdMeters": 500,
+        "distanceM": 1178.75,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "CIMB Thai",
+      "r_longdo": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.6499238916115,
+        "apiLng": 100.522355572297,
+        "passThresholdMeters": 500,
+        "distanceM": 10809.77,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.6975143,
+        "apiLng": 100.5376375,
+        "passThresholdMeters": 500,
+        "distanceM": 5278.14,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.7632448,
+        "apiLng": 100.4967984,
+        "passThresholdMeters": 500,
+        "distanceM": 5909.83,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 13.77109235,
+        "apiLng": 100.50476554017933,
+        "passThresholdMeters": 500,
+        "distanceM": 5540.33,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.743947541782804,
+        "refLng": 100.54778158203689,
+        "apiLat": 14.9795493,
+        "apiLng": 102.0947489,
+        "passThresholdMeters": 500,
+        "distanceM": 215972.21,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Kiatnakin Phatra Bank Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารเกียรตินาคิน สำนักงานใหญ่อโศก",
+      "r_longdo": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": 13.728444,
+        "apiLng": 100.515277,
+        "passThresholdMeters": 500,
+        "distanceM": 5419.08,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": 13.7285042,
+        "apiLng": 100.515219,
+        "passThresholdMeters": 500,
+        "distanceM": 5422.6,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "KKP",
+      "r_longdo": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": 15.86425106594526,
+        "apiLng": 104.63617622852325,
+        "passThresholdMeters": 500,
+        "distanceM": 497271.86,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": 30.5798513,
+        "apiLng": 74.8174019,
+        "passThresholdMeters": 500,
+        "distanceM": 3230996.05,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": 11.672385410621946,
+        "apiLng": 78.05715776240399,
+        "passThresholdMeters": 500,
+        "distanceM": 2451081.68,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.74557673298857,
+        "refLng": 100.56224468366406,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "United Overseas Bank (Thai) Public Company Limited",
+      "r_longdo": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 13.7474643592896,
+        "apiLng": 100.522563180047,
+        "passThresholdMeters": 500,
+        "distanceM": 5481.65,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 6.412828,
+        "apiLng": 1.880423,
+        "passThresholdMeters": 500,
+        "distanceM": 10769650.34,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      }
+    },
+    {
+      "place": "ธนาคารยูโอบี สำนักยูโอบี พลาซา กรุงเทพ",
+      "r_longdo": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_locationiq": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 500
+      },
+      "r_geoapify": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_opencage": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 13.75398,
+        "apiLng": 100.50144,
+        "passThresholdMeters": 500,
+        "distanceM": 7872.86,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "UOB Thai",
+      "r_longdo": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 13.7880243,
+        "apiLng": 100.5361715,
+        "passThresholdMeters": 500,
+        "distanceM": 7418.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 8.6120974,
+        "apiLng": 98.240987,
+        "passThresholdMeters": 500,
+        "distanceM": 623182.13,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 13.7880243,
+        "apiLng": 100.5361715,
+        "passThresholdMeters": 500,
+        "distanceM": 7418.3,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.729967280401857,
+        "refLng": 100.57000875729379,
+        "apiLat": 8.6120974,
+        "apiLng": 98.240987,
+        "passThresholdMeters": 500,
+        "distanceM": 623182.13,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "SCB Park Plaza",
+      "r_longdo": {
+        "refLat": 13.828174998147418,
+        "refLng": 100.5647765766634,
+        "apiLat": 13.8272397586125,
+        "apiLng": 100.565784025815,
+        "passThresholdMeters": 500,
+        "distanceM": 150.49,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.828174998147418,
+        "refLng": 100.5647765766634,
+        "apiLat": 13.827494,
+        "apiLng": 100.5649812,
+        "passThresholdMeters": 500,
+        "distanceM": 78.88,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.828174998147418,
+        "refLng": 100.5647765766634,
+        "apiLat": 13.827494000000002,
+        "apiLng": 100.56498124775689,
+        "passThresholdMeters": 500,
+        "distanceM": 78.88,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.828174998147418,
+        "refLng": 100.5647765766634,
+        "apiLat": 13.827494000000002,
+        "apiLng": 100.56498124775689,
+        "passThresholdMeters": 500,
+        "distanceM": 78.88,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.828174998147418,
+        "refLng": 100.5647765766634,
+        "apiLat": 13.827494,
+        "apiLng": 100.5649812,
+        "passThresholdMeters": 500,
+        "distanceM": 78.88,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "True Digital Park",
+      "r_longdo": {
+        "refLat": 13.685975929700614,
+        "refLng": 100.61171167604586,
+        "apiLat": 13.68527125,
+        "apiLng": 100.61108641,
+        "passThresholdMeters": 500,
+        "distanceM": 103.46,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.685975929700614,
+        "refLng": 100.61171167604586,
+        "apiLat": 13.685581,
+        "apiLng": 100.6113077,
+        "passThresholdMeters": 500,
+        "distanceM": 61.91,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.685975929700614,
+        "refLng": 100.61171167604586,
+        "apiLat": 13.685580999999999,
+        "apiLng": 100.61130765066844,
+        "passThresholdMeters": 500,
+        "distanceM": 61.92,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.685975929700614,
+        "refLng": 100.61171167604586,
+        "apiLat": 13.685580999999999,
+        "apiLng": 100.61130765066844,
+        "passThresholdMeters": 500,
+        "distanceM": 61.92,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.685975929700614,
+        "refLng": 100.61171167604586,
+        "apiLat": 13.685581,
+        "apiLng": 100.6113077,
+        "passThresholdMeters": 500,
+        "distanceM": 61.91,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "The PARQ",
+      "r_longdo": {
+        "refLat": 13.722047007575828,
+        "refLng": 100.55957258288545,
+        "apiLat": 13.721284253342313,
+        "apiLng": 100.55818989872932,
+        "passThresholdMeters": 500,
+        "distanceM": 171.76,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.722047007575828,
+        "refLng": 100.55957258288545,
+        "apiLat": 13.7213017,
+        "apiLng": 100.5577305,
+        "passThresholdMeters": 500,
+        "distanceM": 215.55,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.722047007575828,
+        "refLng": 100.55957258288545,
+        "apiLat": 13.721301650000001,
+        "apiLng": 100.55773052286497,
+        "passThresholdMeters": 500,
+        "distanceM": 215.55,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.722047007575828,
+        "refLng": 100.55957258288545,
+        "apiLat": 13.721301650000001,
+        "apiLng": 100.55773052286497,
+        "passThresholdMeters": 500,
+        "distanceM": 215.55,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.722047007575828,
+        "refLng": 100.55957258288545,
+        "apiLat": 13.7213017,
+        "apiLng": 100.5577305,
+        "passThresholdMeters": 500,
+        "distanceM": 215.55,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Samyan Mitrtown",
+      "r_longdo": {
+        "refLat": 13.734553748460058,
+        "refLng": 100.52803264155962,
+        "apiLat": 13.733798,
+        "apiLng": 100.528467,
+        "passThresholdMeters": 500,
+        "distanceM": 96.25,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.734553748460058,
+        "refLng": 100.52803264155962,
+        "apiLat": 13.7343452,
+        "apiLng": 100.5282654,
+        "passThresholdMeters": 500,
+        "distanceM": 34.2,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.734553748460058,
+        "refLng": 100.52803264155962,
+        "apiLat": 13.73434515,
+        "apiLng": 100.52826542229755,
+        "passThresholdMeters": 500,
+        "distanceM": 34.21,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.734553748460058,
+        "refLng": 100.52803264155962,
+        "apiLat": 13.73434515,
+        "apiLng": 100.52826542229755,
+        "passThresholdMeters": 500,
+        "distanceM": 34.21,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.734553748460058,
+        "refLng": 100.52803264155962,
+        "apiLat": 13.7343451,
+        "apiLng": 100.5282654,
+        "passThresholdMeters": 500,
+        "distanceM": 34.21,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Empire Tower",
+      "r_longdo": {
+        "refLat": 13.720799586567248,
+        "refLng": 100.53046648969794,
+        "apiLat": 13.720506462052082,
+        "apiLng": 100.53052291274071,
+        "passThresholdMeters": 500,
+        "distanceM": 33.16,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.720799586567248,
+        "refLng": 100.53046648969794,
+        "apiLat": 13.7203185,
+        "apiLng": 100.5301525,
+        "passThresholdMeters": 500,
+        "distanceM": 63.34,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.720799586567248,
+        "refLng": 100.53046648969794,
+        "apiLat": 13.720318500000001,
+        "apiLng": 100.53015253003511,
+        "passThresholdMeters": 500,
+        "distanceM": 63.34,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.720799586567248,
+        "refLng": 100.53046648969794,
+        "apiLat": 13.720318500000001,
+        "apiLng": 100.53015253003511,
+        "passThresholdMeters": 500,
+        "distanceM": 63.34,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.720799586567248,
+        "refLng": 100.53046648969794,
+        "apiLat": 13.7203185,
+        "apiLng": 100.5301525,
+        "passThresholdMeters": 500,
+        "distanceM": 63.34,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "FYI Center",
+      "r_longdo": {
+        "refLat": 13.721511809390133,
+        "refLng": 100.56030424536947,
+        "apiLat": 13.720539032928365,
+        "apiLng": 100.55997490882874,
+        "passThresholdMeters": 500,
+        "distanceM": 113.87,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.721511809390133,
+        "refLng": 100.56030424536947,
+        "apiLat": 13.7205808,
+        "apiLng": 100.5600355,
+        "passThresholdMeters": 500,
+        "distanceM": 107.52,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.721511809390133,
+        "refLng": 100.56030424536947,
+        "apiLat": 13.7205808,
+        "apiLng": 100.56003549439502,
+        "passThresholdMeters": 500,
+        "distanceM": 107.52,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.721511809390133,
+        "refLng": 100.56030424536947,
+        "apiLat": 13.7205808,
+        "apiLng": 100.56003549439502,
+        "passThresholdMeters": 500,
+        "distanceM": 107.52,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.721511809390133,
+        "refLng": 100.56030424536947,
+        "apiLat": 13.7205808,
+        "apiLng": 100.5600355,
+        "passThresholdMeters": 500,
+        "distanceM": 107.52,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Singha Complex",
+      "r_longdo": {
+        "refLat": 13.748596416580138,
+        "refLng": 100.5644066766169,
+        "apiLat": 13.74866858,
+        "apiLng": 100.56399454,
+        "passThresholdMeters": 500,
+        "distanceM": 45.23,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.748596416580138,
+        "refLng": 100.5644066766169,
+        "apiLat": 13.7482719,
+        "apiLng": 100.564487,
+        "passThresholdMeters": 500,
+        "distanceM": 37.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.748596416580138,
+        "refLng": 100.5644066766169,
+        "apiLat": 13.7482719,
+        "apiLng": 100.5644870281224,
+        "passThresholdMeters": 500,
+        "distanceM": 37.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.748596416580138,
+        "refLng": 100.5644066766169,
+        "apiLat": 13.7482719,
+        "apiLng": 100.5644870281224,
+        "passThresholdMeters": 500,
+        "distanceM": 37.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.748596416580138,
+        "refLng": 100.5644066766169,
+        "apiLat": 13.7482719,
+        "apiLng": 100.564487,
+        "passThresholdMeters": 500,
+        "distanceM": 37.11,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "One Bangkok",
+      "r_longdo": {
+        "refLat": 13.727636540725747,
+        "refLng": 100.54738318400423,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.727636540725747,
+        "refLng": 100.54738318400423,
+        "apiLat": 13.7268125,
+        "apiLng": 100.5468443,
+        "passThresholdMeters": 500,
+        "distanceM": 108.56,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.727636540725747,
+        "refLng": 100.54738318400423,
+        "apiLat": 13.7268125,
+        "apiLng": 100.54684432689879,
+        "passThresholdMeters": 500,
+        "distanceM": 108.55,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.727636540725747,
+        "refLng": 100.54738318400423,
+        "apiLat": 13.7268125,
+        "apiLng": 100.54684432689879,
+        "passThresholdMeters": 500,
+        "distanceM": 108.55,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.727636540725747,
+        "refLng": 100.54738318400423,
+        "apiLat": 13.7268125,
+        "apiLng": 100.5468443,
+        "passThresholdMeters": 500,
+        "distanceM": 108.56,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Park Ventures Ecoplex",
+      "r_longdo": {
+        "refLat": 13.743888887708017,
+        "refLng": 100.54754425388276,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.743888887708017,
+        "refLng": 100.54754425388276,
+        "apiLat": 13.7426874,
+        "apiLng": 100.548021,
+        "passThresholdMeters": 500,
+        "distanceM": 143.18,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.743888887708017,
+        "refLng": 100.54754425388276,
+        "apiLat": 13.74268735,
+        "apiLng": 100.54802102638202,
+        "passThresholdMeters": 500,
+        "distanceM": 143.19,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.743888887708017,
+        "refLng": 100.54754425388276,
+        "apiLat": 13.74268735,
+        "apiLng": 100.54802102638202,
+        "passThresholdMeters": 500,
+        "distanceM": 143.19,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.743888887708017,
+        "refLng": 100.54754425388276,
+        "apiLat": 13.7426874,
+        "apiLng": 100.548021,
+        "passThresholdMeters": 500,
+        "distanceM": 143.18,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Chamchuri Square",
+      "r_longdo": {
+        "refLat": 13.733216349635214,
+        "refLng": 100.53067971468855,
+        "apiLat": 13.73297,
+        "apiLng": 100.53042,
+        "passThresholdMeters": 500,
+        "distanceM": 39.21,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.733216349635214,
+        "refLng": 100.53067971468855,
+        "apiLat": 13.7329424,
+        "apiLng": 100.5307116,
+        "passThresholdMeters": 500,
+        "distanceM": 30.66,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.733216349635214,
+        "refLng": 100.53067971468855,
+        "apiLat": 13.73294235,
+        "apiLng": 100.53071160312766,
+        "passThresholdMeters": 500,
+        "distanceM": 30.66,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.733216349635214,
+        "refLng": 100.53067971468855,
+        "apiLat": 13.73294235,
+        "apiLng": 100.53071160312766,
+        "passThresholdMeters": 500,
+        "distanceM": 30.66,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.733216349635214,
+        "refLng": 100.53067971468855,
+        "apiLat": 13.7329424,
+        "apiLng": 100.5307116,
+        "passThresholdMeters": 500,
+        "distanceM": 30.66,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "place": "Silom Complex",
+      "r_longdo": {
+        "refLat": 13.728363701522275,
+        "refLng": 100.53580825221295,
+        "apiLat": 13.72826,
+        "apiLng": 100.53493,
+        "passThresholdMeters": 500,
+        "distanceM": 95.57,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_nominatim": {
+        "refLat": 13.728363701522275,
+        "refLng": 100.53580825221295,
+        "apiLat": 13.7281397,
+        "apiLng": 100.5350839,
+        "passThresholdMeters": 500,
+        "distanceM": 82.11,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.728363701522275,
+        "refLng": 100.53580825221295,
+        "apiLat": 13.7281397,
+        "apiLng": 100.53508386362427,
+        "passThresholdMeters": 500,
+        "distanceM": 82.12,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.728363701522275,
+        "refLng": 100.53580825221295,
+        "apiLat": 13.7281397,
+        "apiLng": 100.53508386362427,
+        "passThresholdMeters": 500,
+        "distanceM": 82.12,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_opencage": {
+        "refLat": 13.728363701522275,
+        "refLng": 100.53580825221295,
+        "apiLat": 13.7281397,
+        "apiLng": 100.5350839,
+        "passThresholdMeters": 500,
+        "distanceM": 82.11,
+        "pass": true,
+        "statusCode": 200
       }
     }
   ]

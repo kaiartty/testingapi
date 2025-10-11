@@ -19,22 +19,18 @@
         "exec": [
           "const it = pm.iterationData;",
           "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
-
+          "",
           "// ค่าจาก CSV (หรือ fallback จาก variables)",
           "const placeRaw = String(get('place', pm.variables.get('place')));",
           "const placeEnc = encodeURIComponent(placeRaw);",
-
+          "",
           "// header: ตัวเลขเท่านั้น (ปลอดภัย)",
           "pm.request.headers.upsert({ key: 'X-Ref-Lat',   value: String(get('refLat', pm.variables.get('refLat'))) });",
           "pm.request.headers.upsert({ key: 'X-Ref-Lng',   value: String(get('refLng', pm.variables.get('refLng'))) });",
           "pm.request.headers.upsert({ key: 'X-Threshold', value: String(get('passThresholdMeters', pm.variables.get('passThresholdMeters') || 200)) });",
-
+          "",
           "// (ทางเลือก) เก็บ place แบบเข้ารหัส ASCII-safe",
-          "pm.request.headers.upsert({ key: 'X-Place-Enc', value: placeEnc });",
-
-          "// DEBUG (ถ้าต้องการ):",
-          "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
-          "// console.log('HEADERS:', pm.request.headers.toObject());"
+          "pm.request.headers.upsert({ key: 'X-Place-Enc', value: placeEnc });"
         ]
       }
     }
@@ -102,6 +98,18 @@
       "name": "GET Location by place (nominatim)",
       "event": [
         {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// init counter for this item only once per retry chain",
+              "if (pm.collectionVariables.get('nominatim_retry_count') === undefined) {",
+              "  pm.collectionVariables.set('nominatim_retry_count', '0');",
+              "}"
+            ]
+          }
+        },
+        {
           "listen": "test",
           "script": {
             "type": "text/javascript",
@@ -139,9 +147,23 @@
               "  pm.expect(distance).to.be.below(threshold + 1e-9);",
               "});",
               "",
-              "console.log(`(nominatim) Place: ${pm.variables.get('place')}`);",
-              "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
-              "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+              "// ---------- Conditional retry on 403 (max 2 retries, 300ms gap via --delay-request) ----------",
+              "const code = pm.response.code;",
+              "if (code === 403) {",
+              "  const raw = pm.collectionVariables.get('nominatim_retry_count') || '0';",
+              "  const count = parseInt(raw, 10) || 0;",
+              "  if (count < 2) {",
+              "    pm.collectionVariables.set('nominatim_retry_count', String(count + 1));",
+              "    postman.setNextRequest('GET Location by place (nominatim)');",
+              "    console.log(`[nominatim] 403 -> retry #${count + 1}`);",
+              "  } else {",
+              "    pm.collectionVariables.unset('nominatim_retry_count');",
+              "    console.log('[nominatim] 403 -> reached max retries (2), stop retrying.');",
+              "  }",
+              "} else {",
+              "  // clear counter on non-403 (success or other errors) so next place starts fresh",
+              "  pm.collectionVariables.unset('nominatim_retry_count');",
+              "}"
             ]
           }
         }
@@ -153,6 +175,264 @@
           "raw": "{{baseUrl}}/api/v1/locations/nominatim?place={{place}}",
           "host": ["{{baseUrl}}"],
           "path": ["api", "v1", "locations", "nominatim"],
+          "query": [{ "key": "place", "value": "{{place}}" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Location by place (locationiq)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// init counter for this item only once per retry chain",
+              "if (pm.collectionVariables.get('nominatim_retry_count') === undefined) {",
+              "  pm.collectionVariables.set('nominatim_retry_count', '0');",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function toRad(d){return d*Math.PI/180;}",
+              "function haversine(lat1,lng1,lat2,lng2){",
+              "  const R=6371000;",
+              "  const dLat=toRad(lat2-lat1);",
+              "  const dLng=toRad(lng2-lng1);",
+              "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+              "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+              "  return R*c;",
+              "}",
+              "",
+              "// อ่านค่าจาก header ที่ตั้งไว้ใน pre-request (จะอิง CSV ตาม iteration)",
+              "const getHeaderNum = (k) => Number(pm.request.headers.get(k));",
+              "const refLat = getHeaderNum('X-Ref-Lat');",
+              "const refLng = getHeaderNum('X-Ref-Lng');",
+              "const threshold = getHeaderNum('X-Threshold') || Number(pm.variables.get('passThresholdMeters') || 200);",
+              "",
+              "pm.test('Response is 200 and success', function(){",
+              "  pm.response.to.have.status(200);",
+              "  const json = pm.response.json();",
+              "  pm.expect(json.success).to.eql(true);",
+              "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "const apiLat = Number(json.data.lat);",
+              "const apiLng = Number(json.data.lng);",
+              "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+              "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+              "",
+              "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+              "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+              "});",
+              "",
+              "// ---------- Conditional retry on 403 (max 2 retries, 300ms gap via --delay-request) ----------",
+              "const code = pm.response.code;",
+              "if (code === 403) {",
+              "  const raw = pm.collectionVariables.get('nominatim_retry_count') || '0';",
+              "  const count = parseInt(raw, 10) || 0;",
+              "  if (count < 2) {",
+              "    pm.collectionVariables.set('nominatim_retry_count', String(count + 1));",
+              "    postman.setNextRequest('GET Location by place (nominatim)');",
+              "    console.log(`[nominatim] 403 -> retry #${count + 1}`);",
+              "  } else {",
+              "    pm.collectionVariables.unset('nominatim_retry_count');",
+              "    console.log('[nominatim] 403 -> reached max retries (2), stop retrying.');",
+              "  }",
+              "} else {",
+              "  // clear counter on non-403 (success or other errors) so next place starts fresh",
+              "  pm.collectionVariables.unset('nominatim_retry_count');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/locations/locationiq?place={{place}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "locations", "locationiq"],
+          "query": [{ "key": "place", "value": "{{place}}" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Location by place (geoapify)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// init counter for this item only once per retry chain",
+              "if (pm.collectionVariables.get('nominatim_retry_count') === undefined) {",
+              "  pm.collectionVariables.set('nominatim_retry_count', '0');",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function toRad(d){return d*Math.PI/180;}",
+              "function haversine(lat1,lng1,lat2,lng2){",
+              "  const R=6371000;",
+              "  const dLat=toRad(lat2-lat1);",
+              "  const dLng=toRad(lng2-lng1);",
+              "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+              "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+              "  return R*c;",
+              "}",
+              "",
+              "// อ่านค่าจาก header ที่ตั้งไว้ใน pre-request (จะอิง CSV ตาม iteration)",
+              "const getHeaderNum = (k) => Number(pm.request.headers.get(k));",
+              "const refLat = getHeaderNum('X-Ref-Lat');",
+              "const refLng = getHeaderNum('X-Ref-Lng');",
+              "const threshold = getHeaderNum('X-Threshold') || Number(pm.variables.get('passThresholdMeters') || 200);",
+              "",
+              "pm.test('Response is 200 and success', function(){",
+              "  pm.response.to.have.status(200);",
+              "  const json = pm.response.json();",
+              "  pm.expect(json.success).to.eql(true);",
+              "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "const apiLat = Number(json.data.lat);",
+              "const apiLng = Number(json.data.lng);",
+              "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+              "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+              "",
+              "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+              "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+              "});",
+              "",
+              "// ---------- Conditional retry on 403 (max 2 retries, 300ms gap via --delay-request) ----------",
+              "const code = pm.response.code;",
+              "if (code === 403) {",
+              "  const raw = pm.collectionVariables.get('nominatim_retry_count') || '0';",
+              "  const count = parseInt(raw, 10) || 0;",
+              "  if (count < 2) {",
+              "    pm.collectionVariables.set('nominatim_retry_count', String(count + 1));",
+              "    postman.setNextRequest('GET Location by place (nominatim)');",
+              "    console.log(`[nominatim] 403 -> retry #${count + 1}`);",
+              "  } else {",
+              "    pm.collectionVariables.unset('nominatim_retry_count');",
+              "    console.log('[nominatim] 403 -> reached max retries (2), stop retrying.');",
+              "  }",
+              "} else {",
+              "  // clear counter on non-403 (success or other errors) so next place starts fresh",
+              "  pm.collectionVariables.unset('nominatim_retry_count');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/locations/geoapify?place={{place}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "locations", "geoapify"],
+          "query": [{ "key": "place", "value": "{{place}}" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Location by place (opencage)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// init counter for this item only once per retry chain",
+              "if (pm.collectionVariables.get('nominatim_retry_count') === undefined) {",
+              "  pm.collectionVariables.set('nominatim_retry_count', '0');",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function toRad(d){return d*Math.PI/180;}",
+              "function haversine(lat1,lng1,lat2,lng2){",
+              "  const R=6371000;",
+              "  const dLat=toRad(lat2-lat1);",
+              "  const dLng=toRad(lng2-lng1);",
+              "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+              "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+              "  return R*c;",
+              "}",
+              "",
+              "// อ่านค่าจาก header ที่ตั้งไว้ใน pre-request (จะอิง CSV ตาม iteration)",
+              "const getHeaderNum = (k) => Number(pm.request.headers.get(k));",
+              "const refLat = getHeaderNum('X-Ref-Lat');",
+              "const refLng = getHeaderNum('X-Ref-Lng');",
+              "const threshold = getHeaderNum('X-Threshold') || Number(pm.variables.get('passThresholdMeters') || 200);",
+              "",
+              "pm.test('Response is 200 and success', function(){",
+              "  pm.response.to.have.status(200);",
+              "  const json = pm.response.json();",
+              "  pm.expect(json.success).to.eql(true);",
+              "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "const apiLat = Number(json.data.lat);",
+              "const apiLng = Number(json.data.lng);",
+              "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+              "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+              "",
+              "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+              "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+              "});",
+              "",
+              "// ---------- Conditional retry on 403 (max 2 retries, 300ms gap via --delay-request) ----------",
+              "const code = pm.response.code;",
+              "if (code === 403) {",
+              "  const raw = pm.collectionVariables.get('nominatim_retry_count') || '0';",
+              "  const count = parseInt(raw, 10) || 0;",
+              "  if (count < 2) {",
+              "    pm.collectionVariables.set('nominatim_retry_count', String(count + 1));",
+              "    postman.setNextRequest('GET Location by place (nominatim)');",
+              "    console.log(`[nominatim] 403 -> retry #${count + 1}`);",
+              "  } else {",
+              "    pm.collectionVariables.unset('nominatim_retry_count');",
+              "    console.log('[nominatim] 403 -> reached max retries (2), stop retrying.');",
+              "  }",
+              "} else {",
+              "  // clear counter on non-403 (success or other errors) so next place starts fresh",
+              "  pm.collectionVariables.unset('nominatim_retry_count');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/locations/opencage?place={{place}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "locations", "opencage"],
           "query": [{ "key": "place", "value": "{{place}}" }]
         }
       },
