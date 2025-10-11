@@ -1,8 +1,8 @@
 {
-  "total": 5,
-  "passed": 2,
-  "failed": 3,
-  "passRatePercent": 40,
+  "total": 6,
+  "passed": 1,
+  "failed": 5,
+  "passRatePercent": 16.67,
   "results": [
     {
       "place": "Chulalongkorn University",
@@ -45,14 +45,24 @@
       "pass": false
     },
     {
-      "place": "ประตูน้ำ",
-      "refLat": 18.796143,
-      "refLng": 98.979263,
+      "place": "Wat Arun",
+      "refLat": 13.7437,
+      "refLng": 100.4889,
       "apiLat": 18.796143,
       "apiLng": 98.979263,
-      "passThresholdMeters": 300,
-      "differenct(m)": 0,
-      "pass": true
+      "passThresholdMeters": 200,
+      "differenct(m)": 584441.04,
+      "pass": false
+    },
+    {
+      "place": "Chulalongkorn University",
+      "refLat": 13.736717,
+      "refLng": 100.532,
+      "apiLat": 18.796143,
+      "apiLng": 98.979263,
+      "passThresholdMeters": 200,
+      "differenct(m)": 586470.73,
+      "pass": false
     }
   ]
 }

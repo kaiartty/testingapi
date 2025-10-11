@@ -5,7 +5,7 @@
     },
     "item": [
       {
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "name": "GET Location by place (accuracy test)",
         "request": {
           "url": {
@@ -32,7 +32,7 @@
           {
             "listen": "test",
             "script": {
-              "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+              "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
               "type": "text/javascript",
               "exec": [
                 "function toRad(d){return d*Math.PI/180;}",
@@ -70,7 +70,7 @@
                 "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                 "console.log(`Error distance: ${distance.toFixed(2)} m`);"
               ],
-              "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+              "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
             }
           }
         ]
@@ -80,7 +80,7 @@
       {
         "listen": "prerequest",
         "script": {
-          "id": "f5687596-f507-4562-a139-d1670d7ea913",
+          "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
           "type": "text/javascript",
           "exec": [
             "const it = pm.iterationData;",
@@ -98,7 +98,7 @@
             "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
             "// console.log('HEADERS:', pm.request.headers.toObject());"
           ],
-          "_lastExecutionId": "e0edf138-76a7-4d01-b54c-59f26cb2ca22"
+          "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
         }
       }
     ],
@@ -136,7 +136,7 @@
     }
   },
   "environment": {
-    "id": "38c39a67-78d4-4e27-a231-1fbad5940616",
+    "id": "bcb13e9c-11b3-48c8-a1fc-b21d49f78125",
     "values": [
       {
         "type": "any",
@@ -145,68 +145,68 @@
       },
       {
         "type": "any",
-        "value": "0.00",
+        "value": "586470.73",
         "key": "lastDistanceMeters"
       }
     ]
   },
   "globals": {
-    "id": "c51d5e01-60af-48bd-808d-a6f502d5f631",
+    "id": "ffdc89c4-cabe-4cdf-a2c6-43266e465436",
     "values": []
   },
   "run": {
     "stats": {
       "iterations": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "items": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "scripts": {
-        "total": 10,
+        "total": 12,
         "pending": 0,
         "failed": 0
       },
       "prerequests": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "requests": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "tests": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "assertions": {
-        "total": 10,
+        "total": 12,
         "pending": 0,
-        "failed": 3
+        "failed": 5
       },
       "testScripts": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       },
       "prerequestScripts": {
-        "total": 5,
+        "total": 6,
         "pending": 0,
         "failed": 0
       }
     },
     "timings": {
-      "responseAverage": 13.6,
-      "responseMin": 6,
-      "responseMax": 42,
-      "responseSd": 14.207040508142434,
+      "responseAverage": 13.333333333333334,
+      "responseMin": 4,
+      "responseMax": 52,
+      "responseSd": 17.317300277147385,
       "dnsAverage": 0,
       "dnsMin": 0,
       "dnsMax": 0,
@@ -215,8 +215,8 @@
       "firstByteMin": 0,
       "firstByteMax": 0,
       "firstByteSd": 0,
-      "started": 1760172877322,
-      "completed": 1760172877840
+      "started": 1760173207494,
+      "completed": 1760173208101
     },
     "executions": [
       {
@@ -224,16 +224,16 @@
           "position": 0,
           "iteration": 0,
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "empty": false,
           "eof": false,
           "bof": true,
           "cr": false,
-          "ref": "5738630d-88eb-4d67-bebc-4a10b2e88222",
-          "httpRequestId": "f1769b3e-b453-4037-a335-3a7860b1b537"
+          "ref": "1cb58ea8-f4eb-45de-8e84-719ab341c2f0",
+          "httpRequestId": "8990b222-65ed-42f5-a19b-39243d0e1e10"
         },
         "item": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -260,7 +260,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -298,7 +298,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -357,7 +357,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "066cae7e-7c06-4704-ae1c-5e0a86f91b35",
+              "value": "9b2f1e72-9462-45e8-beb6-abe93ed0c493",
               "system": true
             },
             {
@@ -379,7 +379,7 @@
           "method": "GET"
         },
         "response": {
-          "id": "faf14112-21a1-49f9-8149-6b046ddbf3a3",
+          "id": "54556c78-c735-497d-ac33-eec1d637ab81",
           "status": "OK",
           "code": 200,
           "header": [
@@ -401,7 +401,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 11 Oct 2025 08:54:37 GMT"
+              "value": "Sat, 11 Oct 2025 09:00:07 GMT"
             },
             {
               "key": "Connection",
@@ -475,10 +475,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 42,
+          "responseTime": 52,
           "responseSize": 57
         },
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "assertions": [
           {
             "assertion": "Response is 200 and success",
@@ -499,16 +499,16 @@
       },
       {
         "cursor": {
-          "ref": "581f9bc4-0c88-45ff-b92e-1188f5928d93",
+          "ref": "19a83178-2d6d-4fd1-8ddd-6cee47c4ff15",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
           "iteration": 1,
           "cr": true,
-          "httpRequestId": "c859761e-88db-4c40-b3cb-52df4f41cb0e"
+          "httpRequestId": "c65df9c2-cec5-44f9-b053-7be10968f208"
         },
         "item": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -535,7 +535,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -573,7 +573,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -632,7 +632,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "ee2ef81c-a6bd-44e2-9efb-ec7b6e6777e4",
+              "value": "1f37bcb9-cf73-4c6d-989b-83ebe99927e3",
               "system": true
             },
             {
@@ -654,7 +654,7 @@
           "method": "GET"
         },
         "response": {
-          "id": "4ce70c49-d013-47c7-a9c8-bc54c2450d16",
+          "id": "f702400e-fe28-45a4-b884-bd91ac9c3d8e",
           "status": "OK",
           "code": 200,
           "header": [
@@ -676,7 +676,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 11 Oct 2025 08:54:37 GMT"
+              "value": "Sat, 11 Oct 2025 09:00:07 GMT"
             },
             {
               "key": "Connection",
@@ -753,7 +753,7 @@
           "responseTime": 7,
           "responseSize": 57
         },
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "assertions": [
           {
             "assertion": "Response is 200 and success",
@@ -774,16 +774,16 @@
       },
       {
         "cursor": {
-          "ref": "79582a48-6fc3-452a-b437-6e53c256f4a3",
+          "ref": "67789520-31a4-42d9-bb84-f2e8394e948f",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
           "iteration": 2,
           "cr": true,
-          "httpRequestId": "5bb6d5e3-3448-4bdf-8108-7c5dd6d2710f"
+          "httpRequestId": "088ff33f-ab94-4e8e-93f4-590c45ed181c"
         },
         "item": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -810,7 +810,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -848,7 +848,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -907,7 +907,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "bab02caa-fb9b-403d-88c9-45fd92569784",
+              "value": "50f63309-6c46-4b57-b675-578e3d5984dd",
               "system": true
             },
             {
@@ -929,7 +929,7 @@
           "method": "GET"
         },
         "response": {
-          "id": "ea9bda61-4abb-4786-85aa-95bc85686ae5",
+          "id": "861c1518-cdb0-48c0-b699-5b0926e17d2f",
           "status": "OK",
           "code": 200,
           "header": [
@@ -951,7 +951,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 11 Oct 2025 08:54:37 GMT"
+              "value": "Sat, 11 Oct 2025 09:00:07 GMT"
             },
             {
               "key": "Connection",
@@ -1028,7 +1028,7 @@
           "responseTime": 6,
           "responseSize": 57
         },
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "assertions": [
           {
             "assertion": "Response is 200 and success",
@@ -1042,16 +1042,16 @@
       },
       {
         "cursor": {
-          "ref": "10acc1eb-9b77-4fca-9d38-dbb736877669",
+          "ref": "b165228d-b01b-4031-a83d-dcf2564f1722",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
           "iteration": 3,
           "cr": true,
-          "httpRequestId": "5f538a3f-91e2-4a67-b036-d5566e02219f"
+          "httpRequestId": "a9e32b09-7828-49bf-99fd-86a9ea3aadb1"
         },
         "item": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -1078,7 +1078,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -1116,7 +1116,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -1175,7 +1175,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "11ded0eb-a9df-4976-a199-bd4f4b639f41",
+              "value": "acb098c1-fffe-4558-8c36-9c71eeaa592c",
               "system": true
             },
             {
@@ -1197,7 +1197,7 @@
           "method": "GET"
         },
         "response": {
-          "id": "877d97a8-65a9-4250-8fbe-d8b2954202b1",
+          "id": "a785d321-e630-478e-bfd3-9bcd923a85e3",
           "status": "OK",
           "code": 200,
           "header": [
@@ -1219,7 +1219,282 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 11 Oct 2025 08:54:37 GMT"
+              "value": "Sat, 11 Oct 2025 09:00:07 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              115,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              34,
+              58,
+              116,
+              114,
+              117,
+              101,
+              44,
+              34,
+              100,
+              97,
+              116,
+              97,
+              34,
+              58,
+              123,
+              34,
+              108,
+              97,
+              116,
+              34,
+              58,
+              49,
+              56,
+              46,
+              55,
+              57,
+              54,
+              49,
+              52,
+              51,
+              44,
+              34,
+              108,
+              110,
+              103,
+              34,
+              58,
+              57,
+              56,
+              46,
+              57,
+              55,
+              57,
+              50,
+              54,
+              51,
+              125,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 5,
+          "responseSize": 57
+        },
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+        "assertions": [
+          {
+            "assertion": "Response is 200 and success",
+            "skipped": false
+          },
+          {
+            "assertion": "Error distance ≤ 200 m",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 1,
+              "test": "Error distance ≤ 200 m",
+              "message": "expected 586911.2797038906 to be below 200.000000001",
+              "stack": "AssertionError: expected 586911.2797038906 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)"
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "ee2c8a7b-9372-4a98-af96-fee183c1cbff",
+          "length": 1,
+          "cycles": 6,
+          "position": 0,
+          "iteration": 4,
+          "cr": true,
+          "httpRequestId": "7576a170-984f-409f-94f1-d33c45919e26"
+        },
+        "item": {
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+          "name": "GET Location by place (accuracy test)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "place",
+                  "value": "{{place}}"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+                "type": "text/javascript",
+                "exec": [
+                  "function toRad(d){return d*Math.PI/180;}",
+                  "function haversine(lat1,lng1,lat2,lng2){",
+                  "  const R=6371000;",
+                  "  const dLat=toRad(lat2-lat1);",
+                  "  const dLng=toRad(lng2-lng1);",
+                  "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+                  "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+                  "  return R*c;",
+                  "}",
+                  "",
+                  "pm.test('Response is 200 and success', function(){",
+                  "  pm.response.to.have.status(200);",
+                  "  const json = pm.response.json();",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "const apiLat = Number(json.data.lat);",
+                  "const apiLng = Number(json.data.lng);",
+                  "const refLat = Number(pm.variables.get('refLat'));",
+                  "const refLng = Number(pm.variables.get('refLng'));",
+                  "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+                  "",
+                  "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+                  "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+                  "",
+                  "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+                  "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+                  "});",
+                  "",
+                  "console.log(`Place: ${pm.variables.get('place')}`);",
+                  "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+                  "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+                ],
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "5000",
+            "path": [
+              "api",
+              "v1",
+              "locations"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "place",
+                "value": "Wat%20Arun"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "X-Ref-Lat",
+              "value": "13.7437"
+            },
+            {
+              "key": "X-Ref-Lng",
+              "value": "100.4889"
+            },
+            {
+              "key": "X-Threshold",
+              "value": "200"
+            },
+            {
+              "key": "X-Place-Enc",
+              "value": "Wat%20Arun"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "c808469e-9e7b-40c0-9857-2a7ff380f6e0",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:5000",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "4fd1255e-7963-4b57-aff4-7b18dacabda9",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "57"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"39-Kd0AtgTTn+XNDu3/sRmsjCDg7E8\""
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 11 Oct 2025 09:00:07 GMT"
             },
             {
               "key": "Connection",
@@ -1296,7 +1571,7 @@
           "responseTime": 6,
           "responseSize": 57
         },
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "assertions": [
           {
             "assertion": "Response is 200 and success",
@@ -1309,24 +1584,24 @@
               "name": "AssertionError",
               "index": 1,
               "test": "Error distance ≤ 200 m",
-              "message": "expected 586911.2797038906 to be below 200.000000001",
-              "stack": "AssertionError: expected 586911.2797038906 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)"
+              "message": "expected 584441.0401323762 to be below 200.000000001",
+              "stack": "AssertionError: expected 584441.0401323762 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)"
             }
           }
         ]
       },
       {
         "cursor": {
-          "ref": "e018e857-e2e0-48be-9784-bd0aa85bca0d",
+          "ref": "1064c1e6-01be-40cf-9009-54974ddc1fa9",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
-          "iteration": 4,
+          "iteration": 5,
           "cr": true,
-          "httpRequestId": "1c1aade9-47d4-4a45-9ffe-29144b23ac0d"
+          "httpRequestId": "4d4231e0-21fa-49ca-8e17-eceeb009642f"
         },
         "item": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -1353,7 +1628,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -1391,7 +1666,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -1411,7 +1686,7 @@
             "query": [
               {
                 "key": "place",
-                "value": "%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%95%E0%B8%B9%E0%B8%99%E0%B9%89%E0%B8%B3"
+                "value": "Chulalongkorn%20University"
               }
             ],
             "variable": []
@@ -1419,19 +1694,19 @@
           "header": [
             {
               "key": "X-Ref-Lat",
-              "value": "18.796143"
+              "value": "13.736717"
             },
             {
               "key": "X-Ref-Lng",
-              "value": "98.979263"
+              "value": "100.532"
             },
             {
               "key": "X-Threshold",
-              "value": "300"
+              "value": "200"
             },
             {
               "key": "X-Place-Enc",
-              "value": "%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%95%E0%B8%B9%E0%B8%99%E0%B9%89%E0%B8%B3"
+              "value": "Chulalongkorn%20University"
             },
             {
               "key": "User-Agent",
@@ -1450,7 +1725,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "8b065948-fb81-4233-925b-08d5e51a6c0e",
+              "value": "c8b21146-9fed-4076-a686-9b09a0b427e7",
               "system": true
             },
             {
@@ -1472,7 +1747,7 @@
           "method": "GET"
         },
         "response": {
-          "id": "b52e8b78-0b80-45a5-8d2f-696e26b5a884",
+          "id": "9b3fb70b-8e7e-4688-9b8e-49f1239c133d",
           "status": "OK",
           "code": 200,
           "header": [
@@ -1494,7 +1769,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 11 Oct 2025 08:54:37 GMT"
+              "value": "Sat, 11 Oct 2025 09:00:08 GMT"
             },
             {
               "key": "Connection",
@@ -1568,24 +1843,31 @@
             ]
           },
           "cookie": [],
-          "responseTime": 7,
+          "responseTime": 4,
           "responseSize": 57
         },
-        "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+        "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
         "assertions": [
           {
             "assertion": "Response is 200 and success",
             "skipped": false
           },
           {
-            "assertion": "Error distance ≤ 300 m",
-            "skipped": false
+            "assertion": "Error distance ≤ 200 m",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 1,
+              "test": "Error distance ≤ 200 m",
+              "message": "expected 586470.7307912916 to be below 200.000000001",
+              "stack": "AssertionError: expected 586470.7307912916 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)"
+            }
           }
         ]
       }
     ],
     "transfers": {
-      "responseTotal": 285
+      "responseTotal": 342
     },
     "failures": [
       {
@@ -1596,8 +1878,8 @@
           "message": "expected 586470.7307912916 to be below 200.000000001",
           "stack": "AssertionError: expected 586470.7307912916 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)",
           "checksum": "5199259286e6454f7607cd7edf18b491",
-          "id": "8ae16d30-50b6-407d-b4ce-3fc55aedf4d7",
-          "timestamp": 1760172877456,
+          "id": "9a94ef63-f57a-46d1-ba1d-adda5344add8",
+          "timestamp": 1760173207646,
           "stacktrace": [
             {
               "fileName": "sandbox-script.js",
@@ -1612,7 +1894,7 @@
         },
         "at": "assertion:1 in test-script",
         "source": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -1639,7 +1921,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -1677,7 +1959,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -1688,7 +1970,7 @@
           },
           "item": [
             {
-              "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+              "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
               "name": "GET Location by place (accuracy test)",
               "request": {
                 "url": {
@@ -1715,7 +1997,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                    "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                     "type": "text/javascript",
                     "exec": [
                       "function toRad(d){return d*Math.PI/180;}",
@@ -1753,7 +2035,7 @@
                       "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                       "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                     ],
-                    "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                    "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
                   }
                 }
               ]
@@ -1763,7 +2045,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "f5687596-f507-4562-a139-d1670d7ea913",
+                "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
                 "type": "text/javascript",
                 "exec": [
                   "const it = pm.iterationData;",
@@ -1781,7 +2063,7 @@
                   "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
                   "// console.log('HEADERS:', pm.request.headers.toObject());"
                 ],
-                "_lastExecutionId": "e0edf138-76a7-4d01-b54c-59f26cb2ca22"
+                "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
               }
             }
           ],
@@ -1822,15 +2104,15 @@
           "position": 0,
           "iteration": 0,
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "empty": false,
           "eof": false,
           "bof": true,
           "cr": false,
-          "ref": "5738630d-88eb-4d67-bebc-4a10b2e88222",
-          "httpRequestId": "f1769b3e-b453-4037-a335-3a7860b1b537",
-          "scriptId": "80afff7b-34cd-4887-a317-60cb2b13071d",
-          "execution": "71e0eff9-d198-448c-9c14-f67de616042e"
+          "ref": "1cb58ea8-f4eb-45de-8e84-719ab341c2f0",
+          "httpRequestId": "8990b222-65ed-42f5-a19b-39243d0e1e10",
+          "scriptId": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+          "execution": "a901e115-6c03-43af-84ba-7c3751066d43"
         }
       },
       {
@@ -1841,8 +2123,8 @@
           "message": "expected 584441.0401323762 to be below 200.000000001",
           "stack": "AssertionError: expected 584441.0401323762 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)",
           "checksum": "307d8265a7ce191482376f8d8eff717e",
-          "id": "79452b67-d470-4bbb-a17c-ee1061f0832e",
-          "timestamp": 1760172877540,
+          "id": "c21287ee-0425-49cb-b7dc-93b6938df4ed",
+          "timestamp": 1760173207720,
           "stacktrace": [
             {
               "fileName": "sandbox-script.js",
@@ -1857,7 +2139,7 @@
         },
         "at": "assertion:1 in test-script",
         "source": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -1884,7 +2166,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -1922,7 +2204,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -1933,7 +2215,7 @@
           },
           "item": [
             {
-              "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+              "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
               "name": "GET Location by place (accuracy test)",
               "request": {
                 "url": {
@@ -1960,7 +2242,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                    "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                     "type": "text/javascript",
                     "exec": [
                       "function toRad(d){return d*Math.PI/180;}",
@@ -1998,7 +2280,7 @@
                       "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                       "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                     ],
-                    "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                    "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
                   }
                 }
               ]
@@ -2008,7 +2290,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "f5687596-f507-4562-a139-d1670d7ea913",
+                "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
                 "type": "text/javascript",
                 "exec": [
                   "const it = pm.iterationData;",
@@ -2026,7 +2308,7 @@
                   "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
                   "// console.log('HEADERS:', pm.request.headers.toObject());"
                 ],
-                "_lastExecutionId": "e0edf138-76a7-4d01-b54c-59f26cb2ca22"
+                "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
               }
             }
           ],
@@ -2064,15 +2346,15 @@
           }
         },
         "cursor": {
-          "ref": "581f9bc4-0c88-45ff-b92e-1188f5928d93",
+          "ref": "19a83178-2d6d-4fd1-8ddd-6cee47c4ff15",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
           "iteration": 1,
           "cr": true,
-          "httpRequestId": "c859761e-88db-4c40-b3cb-52df4f41cb0e",
-          "scriptId": "80afff7b-34cd-4887-a317-60cb2b13071d",
-          "execution": "69fd3ff1-9e58-478b-8921-2962efc25e9b"
+          "httpRequestId": "c65df9c2-cec5-44f9-b053-7be10968f208",
+          "scriptId": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+          "execution": "f81df236-31c2-47cb-981f-0526d746465d"
         }
       },
       {
@@ -2083,8 +2365,8 @@
           "message": "expected 586911.2797038906 to be below 200.000000001",
           "stack": "AssertionError: expected 586911.2797038906 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)",
           "checksum": "52959e70615c8f0b1c5d818d31fec09a",
-          "id": "58df79e5-56ef-4c48-882c-c04e9af15a44",
-          "timestamp": 1760172877722,
+          "id": "73f5b9c2-75c6-423e-a870-b459f92a4f14",
+          "timestamp": 1760173207905,
           "stacktrace": [
             {
               "fileName": "sandbox-script.js",
@@ -2099,7 +2381,7 @@
         },
         "at": "assertion:1 in test-script",
         "source": {
-          "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
           "name": "GET Location by place (accuracy test)",
           "request": {
             "url": {
@@ -2126,7 +2408,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                 "type": "text/javascript",
                 "exec": [
                   "function toRad(d){return d*Math.PI/180;}",
@@ -2164,7 +2446,7 @@
                   "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                   "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                 ],
-                "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
               }
             }
           ]
@@ -2175,7 +2457,7 @@
           },
           "item": [
             {
-              "id": "d016d466-c119-43ba-865d-59d3ebd4c496",
+              "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
               "name": "GET Location by place (accuracy test)",
               "request": {
                 "url": {
@@ -2202,7 +2484,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "80afff7b-34cd-4887-a317-60cb2b13071d",
+                    "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
                     "type": "text/javascript",
                     "exec": [
                       "function toRad(d){return d*Math.PI/180;}",
@@ -2240,7 +2522,7 @@
                       "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
                       "console.log(`Error distance: ${distance.toFixed(2)} m`);"
                     ],
-                    "_lastExecutionId": "622de140-5aa8-4b98-b742-7fa7d58930a5"
+                    "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
                   }
                 }
               ]
@@ -2250,7 +2532,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "f5687596-f507-4562-a139-d1670d7ea913",
+                "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
                 "type": "text/javascript",
                 "exec": [
                   "const it = pm.iterationData;",
@@ -2268,7 +2550,7 @@
                   "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
                   "// console.log('HEADERS:', pm.request.headers.toObject());"
                 ],
-                "_lastExecutionId": "e0edf138-76a7-4d01-b54c-59f26cb2ca22"
+                "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
               }
             }
           ],
@@ -2306,15 +2588,499 @@
           }
         },
         "cursor": {
-          "ref": "10acc1eb-9b77-4fca-9d38-dbb736877669",
+          "ref": "b165228d-b01b-4031-a83d-dcf2564f1722",
           "length": 1,
-          "cycles": 5,
+          "cycles": 6,
           "position": 0,
           "iteration": 3,
           "cr": true,
-          "httpRequestId": "5f538a3f-91e2-4a67-b036-d5566e02219f",
-          "scriptId": "80afff7b-34cd-4887-a317-60cb2b13071d",
-          "execution": "bb007493-e3ed-4500-a6a4-975821ad92d4"
+          "httpRequestId": "a9e32b09-7828-49bf-99fd-86a9ea3aadb1",
+          "scriptId": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+          "execution": "ece3d706-036c-4753-a25e-30eac60335d1"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 1,
+          "test": "Error distance ≤ 200 m",
+          "message": "expected 584441.0401323762 to be below 200.000000001",
+          "stack": "AssertionError: expected 584441.0401323762 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)",
+          "checksum": "307d8265a7ce191482376f8d8eff717e",
+          "id": "04df1ebc-7280-4da7-90ec-24b9d42f0ca8",
+          "timestamp": 1760173207999,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 2,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:1 in test-script",
+        "source": {
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+          "name": "GET Location by place (accuracy test)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "place",
+                  "value": "{{place}}"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+                "type": "text/javascript",
+                "exec": [
+                  "function toRad(d){return d*Math.PI/180;}",
+                  "function haversine(lat1,lng1,lat2,lng2){",
+                  "  const R=6371000;",
+                  "  const dLat=toRad(lat2-lat1);",
+                  "  const dLng=toRad(lng2-lng1);",
+                  "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+                  "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+                  "  return R*c;",
+                  "}",
+                  "",
+                  "pm.test('Response is 200 and success', function(){",
+                  "  pm.response.to.have.status(200);",
+                  "  const json = pm.response.json();",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "const apiLat = Number(json.data.lat);",
+                  "const apiLng = Number(json.data.lng);",
+                  "const refLat = Number(pm.variables.get('refLat'));",
+                  "const refLng = Number(pm.variables.get('refLng'));",
+                  "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+                  "",
+                  "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+                  "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+                  "",
+                  "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+                  "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+                  "});",
+                  "",
+                  "console.log(`Place: ${pm.variables.get('place')}`);",
+                  "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+                  "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+                ],
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "9b3a8e1c-3a6f-4a62-9d7c-1234567890ab"
+          },
+          "item": [
+            {
+              "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+              "name": "GET Location by place (accuracy test)",
+              "request": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "place",
+                      "value": "{{place}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+                    "type": "text/javascript",
+                    "exec": [
+                      "function toRad(d){return d*Math.PI/180;}",
+                      "function haversine(lat1,lng1,lat2,lng2){",
+                      "  const R=6371000;",
+                      "  const dLat=toRad(lat2-lat1);",
+                      "  const dLng=toRad(lng2-lng1);",
+                      "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+                      "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+                      "  return R*c;",
+                      "}",
+                      "",
+                      "pm.test('Response is 200 and success', function(){",
+                      "  pm.response.to.have.status(200);",
+                      "  const json = pm.response.json();",
+                      "  pm.expect(json.success).to.eql(true);",
+                      "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+                      "});",
+                      "",
+                      "const json = pm.response.json();",
+                      "const apiLat = Number(json.data.lat);",
+                      "const apiLng = Number(json.data.lng);",
+                      "const refLat = Number(pm.variables.get('refLat'));",
+                      "const refLng = Number(pm.variables.get('refLng'));",
+                      "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+                      "",
+                      "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+                      "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+                      "",
+                      "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+                      "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+                      "});",
+                      "",
+                      "console.log(`Place: ${pm.variables.get('place')}`);",
+                      "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+                      "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+                    ],
+                    "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
+                "type": "text/javascript",
+                "exec": [
+                  "const it = pm.iterationData;",
+                  "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
+                  "// ค่าจาก CSV (หรือ fallback จาก variables)",
+                  "const placeRaw = String(get('place', pm.variables.get('place')));",
+                  "const placeEnc = encodeURIComponent(placeRaw);",
+                  "// header: ตัวเลขเท่านั้น (ปลอดภัย)",
+                  "pm.request.headers.upsert({ key: 'X-Ref-Lat',   value: String(get('refLat', pm.variables.get('refLat'))) });",
+                  "pm.request.headers.upsert({ key: 'X-Ref-Lng',   value: String(get('refLng', pm.variables.get('refLng'))) });",
+                  "pm.request.headers.upsert({ key: 'X-Threshold', value: String(get('passThresholdMeters', pm.variables.get('passThresholdMeters') || 200)) });",
+                  "// (ทางเลือก) เก็บ place แบบเข้ารหัส ASCII-safe",
+                  "pm.request.headers.upsert({ key: 'X-Place-Enc', value: placeEnc });",
+                  "// DEBUG (ถ้าต้องการ):",
+                  "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
+                  "// console.log('HEADERS:', pm.request.headers.toObject());"
+                ],
+                "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
+              }
+            }
+          ],
+          "variable": [
+            {
+              "type": "any",
+              "value": "http://localhost:5000",
+              "key": "baseUrl"
+            },
+            {
+              "type": "any",
+              "value": "Chulalongkorn University",
+              "key": "place"
+            },
+            {
+              "type": "any",
+              "value": "13.736717",
+              "key": "refLat"
+            },
+            {
+              "type": "any",
+              "value": "100.532",
+              "key": "refLng"
+            },
+            {
+              "type": "any",
+              "value": "200",
+              "key": "passThresholdMeters"
+            }
+          ],
+          "info": {
+            "_postman_id": "9b3a8e1c-3a6f-4a62-9d7c-1234567890ab",
+            "name": "Locations Accuracy",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "ee2c8a7b-9372-4a98-af96-fee183c1cbff",
+          "length": 1,
+          "cycles": 6,
+          "position": 0,
+          "iteration": 4,
+          "cr": true,
+          "httpRequestId": "7576a170-984f-409f-94f1-d33c45919e26",
+          "scriptId": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+          "execution": "53ac578f-f299-4593-828f-d13613115e52"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 1,
+          "test": "Error distance ≤ 200 m",
+          "message": "expected 586470.7307912916 to be below 200.000000001",
+          "stack": "AssertionError: expected 586470.7307912916 to be below 200.000000001\n   at Object.eval sandbox-script.js:2:1)",
+          "checksum": "5199259286e6454f7607cd7edf18b491",
+          "id": "5813dbd9-13c2-4a7c-b16b-216c4ddd374f",
+          "timestamp": 1760173208077,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 2,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:1 in test-script",
+        "source": {
+          "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+          "name": "GET Location by place (accuracy test)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "place",
+                  "value": "{{place}}"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+                "type": "text/javascript",
+                "exec": [
+                  "function toRad(d){return d*Math.PI/180;}",
+                  "function haversine(lat1,lng1,lat2,lng2){",
+                  "  const R=6371000;",
+                  "  const dLat=toRad(lat2-lat1);",
+                  "  const dLng=toRad(lng2-lng1);",
+                  "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+                  "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+                  "  return R*c;",
+                  "}",
+                  "",
+                  "pm.test('Response is 200 and success', function(){",
+                  "  pm.response.to.have.status(200);",
+                  "  const json = pm.response.json();",
+                  "  pm.expect(json.success).to.eql(true);",
+                  "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "const apiLat = Number(json.data.lat);",
+                  "const apiLng = Number(json.data.lng);",
+                  "const refLat = Number(pm.variables.get('refLat'));",
+                  "const refLng = Number(pm.variables.get('refLng'));",
+                  "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+                  "",
+                  "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+                  "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+                  "",
+                  "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+                  "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+                  "});",
+                  "",
+                  "console.log(`Place: ${pm.variables.get('place')}`);",
+                  "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+                  "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+                ],
+                "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "9b3a8e1c-3a6f-4a62-9d7c-1234567890ab"
+          },
+          "item": [
+            {
+              "id": "52f54f27-1810-45ad-bff8-c8ee743ca3f6",
+              "name": "GET Location by place (accuracy test)",
+              "request": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "place",
+                      "value": "{{place}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+                    "type": "text/javascript",
+                    "exec": [
+                      "function toRad(d){return d*Math.PI/180;}",
+                      "function haversine(lat1,lng1,lat2,lng2){",
+                      "  const R=6371000;",
+                      "  const dLat=toRad(lat2-lat1);",
+                      "  const dLng=toRad(lng2-lng1);",
+                      "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+                      "  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+                      "  return R*c;",
+                      "}",
+                      "",
+                      "pm.test('Response is 200 and success', function(){",
+                      "  pm.response.to.have.status(200);",
+                      "  const json = pm.response.json();",
+                      "  pm.expect(json.success).to.eql(true);",
+                      "  pm.expect(json.data).to.have.keys(['lat','lng']);",
+                      "});",
+                      "",
+                      "const json = pm.response.json();",
+                      "const apiLat = Number(json.data.lat);",
+                      "const apiLng = Number(json.data.lng);",
+                      "const refLat = Number(pm.variables.get('refLat'));",
+                      "const refLng = Number(pm.variables.get('refLng'));",
+                      "const threshold = Number(pm.variables.get('passThresholdMeters') || 200);",
+                      "",
+                      "const distance = haversine(apiLat, apiLng, refLat, refLng);",
+                      "pm.environment && pm.environment.set && pm.environment.set('lastDistanceMeters', distance.toFixed(2));",
+                      "",
+                      "pm.test(`Error distance ≤ ${threshold} m`, function(){",
+                      "  pm.expect(distance).to.be.below(threshold + 1e-9);",
+                      "});",
+                      "",
+                      "console.log(`Place: ${pm.variables.get('place')}`);",
+                      "console.log(`Ref(lat,lng)=(${refLat},${refLng})  API(lat,lng)=(${apiLat},${apiLng})`);",
+                      "console.log(`Error distance: ${distance.toFixed(2)} m`);"
+                    ],
+                    "_lastExecutionId": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c9f892c-0974-41ea-9c5a-74cb2e5a4e80",
+                "type": "text/javascript",
+                "exec": [
+                  "const it = pm.iterationData;",
+                  "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
+                  "// ค่าจาก CSV (หรือ fallback จาก variables)",
+                  "const placeRaw = String(get('place', pm.variables.get('place')));",
+                  "const placeEnc = encodeURIComponent(placeRaw);",
+                  "// header: ตัวเลขเท่านั้น (ปลอดภัย)",
+                  "pm.request.headers.upsert({ key: 'X-Ref-Lat',   value: String(get('refLat', pm.variables.get('refLat'))) });",
+                  "pm.request.headers.upsert({ key: 'X-Ref-Lng',   value: String(get('refLng', pm.variables.get('refLng'))) });",
+                  "pm.request.headers.upsert({ key: 'X-Threshold', value: String(get('passThresholdMeters', pm.variables.get('passThresholdMeters') || 200)) });",
+                  "// (ทางเลือก) เก็บ place แบบเข้ารหัส ASCII-safe",
+                  "pm.request.headers.upsert({ key: 'X-Place-Enc', value: placeEnc });",
+                  "// DEBUG (ถ้าต้องการ):",
+                  "// console.log('ITER DATA:', it && it.toObject ? it.toObject() : {});",
+                  "// console.log('HEADERS:', pm.request.headers.toObject());"
+                ],
+                "_lastExecutionId": "995faf69-8fa9-4ee0-b088-2a46c0f0d062"
+              }
+            }
+          ],
+          "variable": [
+            {
+              "type": "any",
+              "value": "http://localhost:5000",
+              "key": "baseUrl"
+            },
+            {
+              "type": "any",
+              "value": "Chulalongkorn University",
+              "key": "place"
+            },
+            {
+              "type": "any",
+              "value": "13.736717",
+              "key": "refLat"
+            },
+            {
+              "type": "any",
+              "value": "100.532",
+              "key": "refLng"
+            },
+            {
+              "type": "any",
+              "value": "200",
+              "key": "passThresholdMeters"
+            }
+          ],
+          "info": {
+            "_postman_id": "9b3a8e1c-3a6f-4a62-9d7c-1234567890ab",
+            "name": "Locations Accuracy",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "1064c1e6-01be-40cf-9009-54974ddc1fa9",
+          "length": 1,
+          "cycles": 6,
+          "position": 0,
+          "iteration": 5,
+          "cr": true,
+          "httpRequestId": "4d4231e0-21fa-49ca-8e17-eceeb009642f",
+          "scriptId": "ecdebd8c-dc64-40d1-9716-f446d5d74233",
+          "execution": "fe1053b1-1c6e-495e-8621-321fe00c4d11"
         }
       }
     ],
