@@ -7,7 +7,7 @@ const RESULT = path.join(__dirname, "results", "home_result.json");
 const SUMMARY = path.join(__dirname, "results", "home_summary.json");
 
 // ---------- config ----------
-const EXPECTED_PLACES = Number(process.env.EXPECTED_PLACES || 15); // เต็ม 88 ตามโจทย์
+const EXPECTED_PLACES = Number(process.env.EXPECTED_PLACES || 15); // ตั้งจำนวนแถว CSV ที่คาดหวัง
 
 // กำหนดลำดับ provider สำหรับการแสดงผล/ตาราง
 const PREFERRED_ORDER = [
@@ -69,7 +69,6 @@ const hasCoords = (rec) =>
   rec && Number.isFinite(rec.apiLat) && Number.isFinite(rec.apiLng);
 
 function readBodyLatLng(execution) {
-  // รองรับทั้ง stream.data (Buffer) และ body/text ที่เป็นสตริง
   try {
     if (execution.response?.stream?.data) {
       const buf = Buffer.from(execution.response.stream.data);
@@ -101,7 +100,7 @@ function sortProviders(keys) {
   });
 }
 
-// --- NEW: สร้างชื่อจาก query (รองรับ structured=true) ---
+// --- NEW: ชื่อจาก query (รองรับ structured=true) ---
 function buildNameFromQuery(u) {
   if (!u || !Array.isArray(u.query)) return null;
 
@@ -137,15 +136,12 @@ function buildNameFromQuery(u) {
   return null;
 }
 
-// --- UPDATED: ใช้ X-Case-Name ก่อน, แล้วค่อย fallback ---
-function getPlaceFrom(ex, idx) {
+// --- UPDATED: ชื่อเคสจาก X-Case-Name > X-Place-Enc > query > item name ---
+function getDisplayPlace(ex, idx) {
   const h = headerMap(ex.request || {});
-
-  // 1) case name จาก pre-request
   const caseName = h["x-case-name"];
   if (caseName && String(caseName).trim()) return String(caseName).trim();
 
-  // 2) place ที่เข้ารหัสไว้
   if (h["x-place-enc"]) {
     try {
       return decodeURIComponent(h["x-place-enc"]);
@@ -153,13 +149,10 @@ function getPlaceFrom(ex, idx) {
       return h["x-place-enc"];
     }
   }
-
-  // 3) ประกอบชื่อจาก query (รองรับ structured)
   const u = ex.request && ex.request.url;
   const built = buildNameFromQuery(u);
   if (built && built.trim()) return built.trim();
 
-  // 4) Fallback เป็นชื่อ item
   return ex.item?.name || `case#${idx + 1}`;
 }
 
@@ -171,17 +164,24 @@ if (!fs.existsSync(RESULT)) {
 const data = JSON.parse(fs.readFileSync(RESULT, "utf8"));
 const executions = data.run?.executions || [];
 
-const perPlace = new Map();
+const perCase = new Map(); // key: `${iteration}::${displayPlace}`
 const stats = Object.create(null);
+const iterationSet = new Set();
 
 executions.forEach((ex, idx) => {
   const h = headerMap(ex.request || {});
-  const place = getPlaceFrom(ex, idx);
+  const displayPlace = getDisplayPlace(ex, idx);
   const providerKey = getProviderKey(ex);
   const refLat = parseFloat(h["x-ref-lat"]);
   const refLng = parseFloat(h["x-ref-lng"]);
   const threshold = parseFloat(h["x-threshold"]);
   const statusCode = ex.response?.code ?? null;
+
+  const iter =
+    ex.cursor && Number.isFinite(ex.cursor.iteration)
+      ? ex.cursor.iteration
+      : idx;
+  iterationSet.add(iter);
 
   const { lat: apiLatRaw, lng: apiLngRaw } = readBodyLatLng(ex);
   const apiLat = Number(apiLatRaw);
@@ -194,8 +194,10 @@ executions.forEach((ex, idx) => {
     pass = Number.isFinite(threshold) ? distance <= threshold : false;
   }
 
-  if (!perPlace.has(place)) perPlace.set(place, { place });
-  const row = perPlace.get(place);
+  const key = `${iter}::${displayPlace}`;
+  if (!perCase.has(key)) perCase.set(key, { displayPlace, iter });
+  const row = perCase.get(key);
+
   const rec = {
     refLat: numOrNull(refLat),
     refLng: numOrNull(refLng),
@@ -213,7 +215,7 @@ executions.forEach((ex, idx) => {
   if (pass) stats[providerKey].passed += 1;
 });
 
-const results = Array.from(perPlace.values());
+const results = Array.from(perCase.values());
 
 // ---------- per-provider summaries ----------
 const summaries = {};
@@ -229,25 +231,30 @@ for (const [prov, s] of Object.entries(stats)) {
   };
 }
 
-// ---------- overall (any-pass out of EXPECTED_PLACES) ----------
+// ---------- overall (any-pass out of EXPECTED_PLACES or iterations count) ----------
 let providers = Object.keys(stats);
 providers = sortProviders(providers);
 
-let passedPlaces = 0;
+// นับบ้านที่ “มีอย่างน้อย 1 provider ผ่าน” ต่อ 1 แถว CSV (iteration)
+let passedCases = 0;
 results.forEach((r) => {
   const anyPass = providers.some((p) => r[`r_${p}`]?.pass);
-  if (anyPass) passedPlaces += 1;
+  if (anyPass) passedCases += 1;
 });
-const totalPlaces = EXPECTED_PLACES;
-const cappedPassed = Math.min(passedPlaces, totalPlaces);
+
+// default รวม = จำนวน iteration พบจริง; แต่ให้เคารพ EXPECTED_PLACES ถ้าตั้งไว้
+const totalCasesDetected = iterationSet.size;
+const total = Number.isFinite(EXPECTED_PLACES)
+  ? EXPECTED_PLACES
+  : totalCasesDetected;
+const passedCapped = Math.min(passedCases, total);
+
 const s_overall = {
-  total: totalPlaces,
-  passed: cappedPassed,
-  failed: totalPlaces - cappedPassed,
+  total,
+  passed: passedCapped,
+  failed: total - passedCapped,
   passRatePercent:
-    totalPlaces > 0
-      ? Number(((cappedPassed / totalPlaces) * 100).toFixed(2))
-      : 0,
+    total > 0 ? Number(((passedCapped / total) * 100).toFixed(2)) : 0,
 };
 
 // ---------- FOUND lists (inline ✅ mark) ----------
@@ -262,8 +269,8 @@ providers.forEach((p) => {
   results.forEach((r) => {
     const rec = r[`r_${p}`];
     if (hasCoords(rec)) {
-      found.add(r.place);
-      if (rec.pass) passed.add(r.place);
+      found.add(r.displayPlace);
+      if (rec.pass) passed.add(r.displayPlace);
     }
   });
   foundByProvider[p] = Array.from(found).sort((a, b) =>
@@ -285,8 +292,8 @@ results.forEach((r) => {
       if (rec.pass) anyPass = true;
     }
   });
-  if (anyFound) foundOverallSet.add(r.place);
-  if (anyPass) passedOverallSet.add(r.place);
+  if (anyFound) foundOverallSet.add(r.displayPlace);
+  if (anyPass) passedOverallSet.add(r.displayPlace);
 });
 
 // overall (with mark)
@@ -305,7 +312,7 @@ providers.forEach((p) => {
 
 // ---------- save ----------
 const summaryObj = {
-  s_overall, // any-pass out of EXPECTED_PLACES
+  s_overall, // any-pass out of EXPECTED_PLACES (หรือ iterations)
   ...summaries,
   places_found_overall,
   places_found_by_provider,
@@ -346,24 +353,26 @@ providers.forEach((p) => {
 });
 
 console.log("\n📊 Accuracy Summary (per place)");
-let header = pad("Place", 30);
+let header = pad("Place", 40);
 providers.forEach((p) => {
   header +=
     " " + pad(`${p}:dist(m)`, 14) + pad(`${p}:res`, 8) + pad(`${p}:code`, 8);
 });
 console.log(header);
 
-results.forEach((r) => {
-  let line = pad(r.place, 30);
-  providers.forEach((p) => {
-    const rec = r[`r_${p}`];
-    const dist = fmt(rec?.distanceM ?? null);
-    const res = rec ? (rec.pass ? "PASS" : "FAIL") : "-";
-    const code = rec?.statusCode ?? "-";
-    line += " " + pad(dist, 14) + pad(res, 8) + pad(code, 8);
+results
+  .sort((a, b) => a.iter - b.iter)
+  .forEach((r) => {
+    let line = pad(r.displayPlace, 40);
+    providers.forEach((p) => {
+      const rec = r[`r_${p}`];
+      const dist = fmt(rec?.distanceM ?? null);
+      const res = rec ? (rec.pass ? "PASS" : "FAIL") : "-";
+      const code = rec?.statusCode ?? "-";
+      line += " " + pad(dist, 14) + pad(res, 8) + pad(code, 8);
+    });
+    console.log(line);
   });
-  console.log(line);
-});
 
 console.log("\n─────────────── Provider Summaries ───────────────");
 providers.forEach((p) => {
