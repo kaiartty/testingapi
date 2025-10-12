@@ -99,28 +99,20 @@
   "item": [
     {
       "name": "LocationIQ",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','locationiq');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
-    },
-    {
-      "name": "Longdo",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','longdo');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
-    },
-    {
-      "name": "Nominatim",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','nominatim');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
-    },
-    {
-      "name": "Geoapify",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','geoapify');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
-    },
-    {
-      "name": "OpenCage",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','opencage');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','locationiq');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     }
   ]
 }
