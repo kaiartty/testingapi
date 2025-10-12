@@ -9,7 +9,11 @@
     "start": "node server.js",
     "geotest:prep": "node -e \"require('fs').mkdirSync('test/results',{recursive:true})\"",
     "geotest:run": "newman run ./test/test.json --env-var baseUrl=http://localhost:5000 --iteration-data ./test/places.csv --reporters json --reporter-json-export ./test/results/result.json --suppress-exit-code --delay-request 300",
-    "geotest": "npm run geotest:prep && npm run geotest:run && node ./test/summarize.js"
+    "geotest": "npm run geotest:prep && npm run geotest:run && node ./test/summarize.js",
+    "hometest:prep": "node -e \"require('fs').mkdirSync('test/results',{recursive:true})\"",
+    "hometest:run": "newman run ./test/home_test.json --env-var baseUrl=http://localhost:5000 --iteration-data ./test/home.csv --reporters json --reporter-json-export ./test/results/home_result.json --suppress-exit-code --delay-request 300",
+    "hometest:summary": "node ./test/summarize_home.js",
+    "hometest": "npm run hometest:prep && npm run hometest:run && npm run hometest:summary"
   },
   "repository": {
     "type": "git",
