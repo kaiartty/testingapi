@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "0d8a6f2c-2c2e-4e64-8c11-aaaaaaaaaaaa",
+    "name": "Home Accuracy - All Providers (CSV row -> all providers)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:5000" }],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const it = pm.iterationData;",
+          "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
+          "const provider = String(pm.variables.get('provider') || 'locationiq').trim();",
+          "const mode        = String(get('mode','text')).trim().toLowerCase();",
+          "const place       = String(get('place','')).trim();",
+          "const houseNumber = String(get('houseNumber','')).trim();",
+          "const street      = String(get('street','')).trim();",
+          "const alley       = String(get('alley','')).trim();",
+          "const subdistrict = String(get('subdistrict','')).trim();",
+          "const district    = String(get('district','')).trim();",
+          "const province    = String(get('province','')).trim();",
+          "const postcode    = String(get('postcode','')).trim();",
+          "const country     = String(get('country','th')).trim();",
+          "const refLatRaw = String(get('reflat','')).trim();",
+          "const refLngRaw = String(get('reflong','')).trim();",
+          "const thrRaw    = String(get('threshold', '200')).trim();",
+          "pm.request.headers.upsert({ key:'X-Ref-Lat',   value: refLatRaw });",
+          "pm.request.headers.upsert({ key:'X-Ref-Lng',   value: refLngRaw });",
+          "pm.request.headers.upsert({ key:'X-Threshold', value: thrRaw });",
+          "const baseUrl = pm.variables.get('baseUrl');",
+          "let qs = [];",
+          "if (mode === 'structured') {",
+          "  qs.push('structured=true');",
+          "  if (houseNumber) qs.push('houseNumber=' + encodeURIComponent(houseNumber));",
+          "  if (street)      qs.push('street=' + encodeURIComponent(street));",
+          "  if (alley)       qs.push('alley=' + encodeURIComponent(alley));",
+          "  if (subdistrict) qs.push('subdistrict=' + encodeURIComponent(subdistrict));",
+          "  if (district)    qs.push('district=' + encodeURIComponent(district));",
+          "  if (province)    qs.push('province=' + encodeURIComponent(province));",
+          "  if (postcode)    qs.push('postcode=' + encodeURIComponent(postcode));",
+          "  if (country)     qs.push('country=' + encodeURIComponent(country));",
+          "  if (place)       qs.push('place=' + encodeURIComponent(place));",
+          "} else {",
+          "  qs.push('place=' + encodeURIComponent(place));",
+          "}",
+          "const resolved = `${baseUrl}/api/v1/locations/${provider}?` + qs.join('&');",
+          "pm.variables.set('resolvedUrl', resolved);",
+          "pm.variables.set('log_place', place);",
+          "pm.variables.set('log_mode', mode);",
+          "pm.variables.set('log_provider', provider);"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "function toRad(d){ return d*Math.PI/180; }",
+          "function haversine(lat1,lng1,lat2,lng2){",
+          "  const R=6371000;",
+          "  const dLat=toRad(lat2-lat1);",
+          "  const dLng=toRad(lng2-lng1);",
+          "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
+          "  return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
+          "}",
+          "pm.test('HTTP 200 & JSON', function(){",
+          "  pm.response.to.have.status(200);",
+          "  pm.expect(() => pm.response.json()).to.not.throw();",
+          "});",
+          "const json = pm.response.json();",
+          "pm.test('success=true and data.lat/lng', function(){",
+          "  pm.expect(json).to.have.property('success', true);",
+          "  pm.expect(json).to.have.property('data');",
+          "  pm.expect(json.data).to.have.property('lat');",
+          "  pm.expect(json.data).to.have.property('lng');",
+          "});",
+          "const refLat    = Number(String(pm.request.headers.get('X-Ref-Lat')||'').trim());",
+          "const refLng    = Number(String(pm.request.headers.get('X-Ref-Lng')||'').trim());",
+          "const threshold = Number(String(pm.request.headers.get('X-Threshold')||'200').trim());",
+          "const apiLat    = Number(json.data.lat);",
+          "const apiLng    = Number(json.data.lng);",
+          "const dist      = haversine(apiLat, apiLng, refLat, refLng);",
+          "const place     = pm.variables.get('log_place');",
+          "const provider  = pm.variables.get('log_provider');",
+          "const mode      = pm.variables.get('log_mode');",
+          "const over      = dist > threshold + 1e-9;",
+          "console.log(`[${provider}] mode=${mode} place=\"${place}\"  ref=(${refLat},${refLng})  api=(${apiLat},${apiLng})  dist=${dist.toFixed(2)}m  threshold=${threshold}m  OVER? ${over}`);",
+          "pm.test(`Distance <= ${threshold} m`, function(){",
+          "  pm.expect(dist).to.be.below(threshold + 1e-9);",
+          "});"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "LocationIQ",
+      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','locationiq');" ] } }],
+      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+    },
+    {
+      "name": "Longdo",
+      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','longdo');" ] } }],
+      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+    },
+    {
+      "name": "Nominatim",
+      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','nominatim');" ] } }],
+      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+    },
+    {
+      "name": "Geoapify",
+      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','geoapify');" ] } }],
+      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+    },
+    {
+      "name": "OpenCage",
+      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','opencage');" ] } }],
+      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+    }
+  ]
+}

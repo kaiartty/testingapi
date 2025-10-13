@@ -4,7 +4,10 @@
     "name": "Home Accuracy - All Providers (CSV row -> all providers)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "variable": [{ "key": "baseUrl", "value": "http://localhost:5000" }],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "retryMax", "value": "1" }
+  ],
   "event": [
     {
       "listen": "prerequest",
@@ -13,7 +16,7 @@
         "exec": [
           "const it = pm.iterationData;",
           "const get = (k, fb) => (it && it.get && it.get(k) != null ? it.get(k) : fb);",
-          "const provider = String(pm.variables.get('provider') || 'locationiq').trim();",
+          "const provider = String(pm.variables.get('provider') || 'locationiq').trim().toLowerCase();",
           "const mode        = String(get('mode','text')).trim().toLowerCase();",
           "const place       = String(get('place','')).trim();",
           "const houseNumber = String(get('houseNumber','')).trim();",
@@ -27,9 +30,12 @@
           "const refLatRaw = String(get('reflat','')).trim();",
           "const refLngRaw = String(get('reflong','')).trim();",
           "const thrRaw    = String(get('threshold', '200')).trim();",
+          "",
+          "// ตั้ง header สำหรับเกณฑ์วัดระยะ",
           "pm.request.headers.upsert({ key:'X-Ref-Lat',   value: refLatRaw });",
           "pm.request.headers.upsert({ key:'X-Ref-Lng',   value: refLngRaw });",
           "pm.request.headers.upsert({ key:'X-Threshold', value: thrRaw });",
+          "",
           "const baseUrl = pm.variables.get('baseUrl');",
           "let qs = [];",
           "if (mode === 'structured') {",
@@ -46,11 +52,25 @@
           "} else {",
           "  qs.push('place=' + encodeURIComponent(place));",
           "}",
+          "",
           "const resolved = `${baseUrl}/api/v1/locations/${provider}?` + qs.join('&');",
           "pm.variables.set('resolvedUrl', resolved);",
           "pm.variables.set('log_place', place);",
           "pm.variables.set('log_mode', mode);",
-          "pm.variables.set('log_provider', provider);"
+          "pm.variables.set('log_provider', provider);",
+          "",
+          "// ---------- Logging: บอกว่าเราจะเทสอะไร ----------",
+          "const partsPreview = `houseNumber=${houseNumber||'-'}, street=${street||'-'}, alley=${alley||'-'}, subdistrict=${subdistrict||'-'}, district=${district||'-'}, province=${province||'-'}, postcode=${postcode||'-'}, country=${country||'-'}`;",
+          "const banner = `[RUN] provider=${provider} | mode=${mode} | place=\"${place}\" | parts: ${partsPreview}`;",
+          "console.log(banner);",
+          "console.log(`[URL] ${resolved}`);",
+          "pm.variables.set('banner', banner);",
+          "",
+          "// ---------- Retry counter per-provider ----------",
+          "const retryKey = `retryCount_${provider}`;",
+          "if (pm.variables.get(retryKey) === undefined || pm.variables.get(retryKey) === null) {",
+          "  pm.variables.set(retryKey, 0);",
+          "}"
         ]
       }
     },
@@ -67,31 +87,65 @@
           "  const a=Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;",
           "  return 2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));",
           "}",
-          "pm.test('HTTP 200 & JSON', function(){",
-          "  pm.response.to.have.status(200);",
-          "  pm.expect(() => pm.response.json()).to.not.throw();",
-          "});",
-          "const json = pm.response.json();",
-          "pm.test('success=true and data.lat/lng', function(){",
-          "  pm.expect(json).to.have.property('success', true);",
-          "  pm.expect(json).to.have.property('data');",
-          "  pm.expect(json.data).to.have.property('lat');",
-          "  pm.expect(json.data).to.have.property('lng');",
-          "});",
-          "const refLat    = Number(String(pm.request.headers.get('X-Ref-Lat')||'').trim());",
-          "const refLng    = Number(String(pm.request.headers.get('X-Ref-Lng')||'').trim());",
-          "const threshold = Number(String(pm.request.headers.get('X-Threshold')||'200').trim());",
-          "const apiLat    = Number(json.data.lat);",
-          "const apiLng    = Number(json.data.lng);",
-          "const dist      = haversine(apiLat, apiLng, refLat, refLng);",
-          "const place     = pm.variables.get('log_place');",
-          "const provider  = pm.variables.get('log_provider');",
-          "const mode      = pm.variables.get('log_mode');",
-          "const over      = dist > threshold + 1e-9;",
-          "console.log(`[${provider}] mode=${mode} place=\"${place}\"  ref=(${refLat},${refLng})  api=(${apiLat},${apiLng})  dist=${dist.toFixed(2)}m  threshold=${threshold}m  OVER? ${over}`);",
-          "pm.test(`Distance <= ${threshold} m`, function(){",
-          "  pm.expect(dist).to.be.below(threshold + 1e-9);",
-          "});"
+          "",
+          "const provider = pm.variables.get('log_provider');",
+          "const mode = pm.variables.get('log_mode');",
+          "const place = pm.variables.get('log_place');",
+          "const retryMax = Number(pm.variables.get('retryMax') || 2);",
+          "const retryKey = `retryCount_${provider}`;",
+          "let retryCount = Number(pm.variables.get(retryKey) || 0);",
+          "",
+          "let httpOk = false, jsonOk = false, logicOk = false, distOk = false;",
+          "",
+          "// --- ตรวจ HTTP & JSON ---",
+          "try {",
+          "  pm.test('HTTP 200', function(){ pm.response.to.have.status(200); });",
+          "  httpOk = pm.response.code === 200;",
+          "  pm.test('JSON parseable', function(){ pm.expect(() => pm.response.json()).to.not.throw(); });",
+          "  jsonOk = true;",
+          "} catch(e) {",
+          "  // จะไปเข้าช่อง retry ด้านล่าง",
+          "}",
+          "",
+          "let json = null;",
+          "if (jsonOk) {",
+          "  json = pm.response.json();",
+          "  pm.test('success=true & data.lat/lng', function(){",
+          "    pm.expect(json).to.have.property('success', true);",
+          "    pm.expect(json).to.have.property('data');",
+          "    pm.expect(json.data).to.have.property('lat');",
+          "    pm.expect(json.data).to.have.property('lng');",
+          "  });",
+          "  logicOk = json && json.success === true && json.data && json.data.lat != null && json.data.lng != null;",
+          "}",
+          "",
+          "// --- วัดระยะ ---",
+          "if (logicOk) {",
+          "  const refLat    = Number(String(pm.request.headers.get('X-Ref-Lat')||'').trim());",
+          "  const refLng    = Number(String(pm.request.headers.get('X-Ref-Lng')||'').trim());",
+          "  const threshold = Number(String(pm.request.headers.get('X-Threshold')||'200').trim());",
+          "  const apiLat    = Number(json.data.lat);",
+          "  const apiLng    = Number(json.data.lng);",
+          "  const dist      = haversine(apiLat, apiLng, refLat, refLng);",
+          "  const over      = dist > threshold + 1e-9;",
+          "  console.log(`[${provider}] mode=${mode} place=\"${place}\"  ref=(${refLat},${refLng})  api=(${apiLat},${apiLng})  dist=${dist.toFixed(2)}m  threshold=${threshold}m  OVER? ${over}`);",
+          "  pm.test(`Distance <= ${threshold} m`, function(){",
+          "    pm.expect(dist).to.be.below(threshold + 1e-9);",
+          "  });",
+          "  distOk = !over;",
+          "}",
+          "",
+          "// --- ตัดสินใจรีทราย ---",
+          "const needRetry = !(httpOk && jsonOk && logicOk && distOk);",
+          "if (needRetry && retryCount < retryMax) {",
+          "  retryCount += 1;",
+          "  pm.variables.set(retryKey, retryCount);",
+          "  console.warn(`RETRY ${retryCount}/${retryMax} -> ${pm.info.requestName}`);",
+          "  postman.setNextRequest(pm.info.requestName);",
+          "} else {",
+          "  // เคลียร์เคาน์เตอร์เมื่อสำเร็จ หรือหมดโควต้า",
+          "  pm.variables.set(retryKey, 0);",
+          "}"
         ]
       }
     }
@@ -99,28 +153,88 @@
   "item": [
     {
       "name": "LocationIQ",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','locationiq');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','locationiq');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     },
     {
       "name": "Longdo",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','longdo');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','longdo');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     },
     {
       "name": "Nominatim",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','nominatim');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','nominatim');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     },
     {
       "name": "Geoapify",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','geoapify');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','geoapify');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     },
     {
       "name": "OpenCage",
-      "event": [{ "listen": "prerequest", "script": { "type": "text/javascript", "exec": [ "pm.variables.set('provider','opencage');" ] } }],
-      "request": { "method": "GET", "header": [], "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] } }
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.variables.set('provider','opencage');"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{resolvedUrl}}", "host": ["{{resolvedUrl}}"] }
+      }
     }
   ]
 }

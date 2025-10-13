@@ -1,0 +1,336 @@
+{
+  "s_overall": {
+    "total": 15,
+    "passed": 3,
+    "failed": 12,
+    "passRatePercent": 20
+  },
+  "s_locationiq": {
+    "total": 6,
+    "passed": 4,
+    "failed": 2,
+    "passRatePercent": 66.67
+  },
+  "s_longdo": {
+    "total": 5,
+    "passed": 0,
+    "failed": 5,
+    "passRatePercent": 0
+  },
+  "s_nominatim": {
+    "total": 5,
+    "passed": 0,
+    "failed": 5,
+    "passRatePercent": 0
+  },
+  "s_geoapify": {
+    "total": 5,
+    "passed": 3,
+    "failed": 2,
+    "passRatePercent": 60
+  },
+  "s_opencage": {
+    "total": 4,
+    "passed": 0,
+    "failed": 4,
+    "passRatePercent": 0
+  },
+  "places_found_overall": [
+    "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th✅",
+    "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th✅",
+    "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th✅",
+    "บ้านเลขที่ 55/7 ถ.สุขุมวิท กรุงเทพมหานคร 10110 th",
+    "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th"
+  ],
+  "places_found_by_provider": {
+    "longdo": [],
+    "nominatim": [
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th"
+    ],
+    "locationiq": [
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th✅",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th✅",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th✅",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th"
+    ],
+    "geoapify": [
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th✅",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th✅",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th✅",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th"
+    ],
+    "opencage": [
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th",
+      "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท กรุงเทพมหานคร 10110 th",
+      "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th"
+    ]
+  },
+  "results": [
+    {
+      "displayPlace": "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th",
+      "iter": 0,
+      "r_locationiq": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7200606,
+        "apiLng": 100.5793672,
+        "passThresholdMeters": 500,
+        "distanceM": 56.89,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_longdo": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7272867,
+        "apiLng": 100.5806616,
+        "passThresholdMeters": 500,
+        "distanceM": 758.97,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.720081406428614,
+        "apiLng": 100.57936482837842,
+        "passThresholdMeters": 500,
+        "distanceM": 54.73,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "displayPlace": "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท พระโขนง กรุงเทพมหานคร 10110 th",
+      "iter": 1,
+      "r_opencage": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.75398,
+        "apiLng": 100.50144,
+        "passThresholdMeters": 500,
+        "distanceM": 9215.11,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7200606,
+        "apiLng": 100.5793672,
+        "passThresholdMeters": 500,
+        "distanceM": 56.89,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_longdo": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7272867,
+        "apiLng": 100.5806616,
+        "passThresholdMeters": 500,
+        "distanceM": 758.97,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.720081406428614,
+        "apiLng": 100.57936482837842,
+        "passThresholdMeters": 500,
+        "distanceM": 54.73,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "displayPlace": "บ้านเลขที่ 55/7 ถ.สุขุมวิท พระโขนง คลองเตย กรุงเทพมหานคร 10110 th",
+      "iter": 2,
+      "r_opencage": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7083,
+        "apiLng": 100.4562,
+        "passThresholdMeters": 500,
+        "distanceM": 13389.66,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7450104,
+        "apiLng": 100.5553432,
+        "passThresholdMeters": 500,
+        "distanceM": 3769.29,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_longdo": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7272867,
+        "apiLng": 100.5806616,
+        "passThresholdMeters": 500,
+        "distanceM": 758.97,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.734340385802543,
+        "apiLng": 100.57116453583225,
+        "passThresholdMeters": 500,
+        "distanceM": 1778.2,
+        "pass": false,
+        "statusCode": 200
+      }
+    },
+    {
+      "displayPlace": "บ้านเลขที่ 55/7 ซ.ซอย 38 ถ.สุขุมวิท คลองเตย กรุงเทพมหานคร th",
+      "iter": 3,
+      "r_opencage": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.71669,
+        "apiLng": 100.57159,
+        "passThresholdMeters": 500,
+        "distanceM": 957.03,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7200606,
+        "apiLng": 100.5793672,
+        "passThresholdMeters": 500,
+        "distanceM": 56.89,
+        "pass": true,
+        "statusCode": 200
+      },
+      "r_longdo": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7273318,
+        "apiLng": 100.5805836,
+        "passThresholdMeters": 500,
+        "distanceM": 762.59,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_geoapify": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.720081406428614,
+        "apiLng": 100.57936482837842,
+        "passThresholdMeters": 500,
+        "distanceM": 54.73,
+        "pass": true,
+        "statusCode": 200
+      }
+    },
+    {
+      "displayPlace": "บ้านเลขที่ 55/7 ถ.สุขุมวิท กรุงเทพมหานคร 10110 th",
+      "iter": 4,
+      "r_opencage": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7083,
+        "apiLng": 100.4562,
+        "passThresholdMeters": 500,
+        "distanceM": 13389.66,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_locationiq": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.7450104,
+        "apiLng": 100.5553432,
+        "passThresholdMeters": 500,
+        "distanceM": 3769.29,
+        "pass": false,
+        "statusCode": 200
+      },
+      "r_longdo": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 404
+      },
+      "r_nominatim": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": null,
+        "apiLng": null,
+        "passThresholdMeters": 500,
+        "distanceM": null,
+        "pass": false,
+        "statusCode": 403
+      },
+      "r_geoapify": {
+        "refLat": 13.720553986021311,
+        "refLng": 100.57950652263635,
+        "apiLat": 13.734340385802543,
+        "apiLng": 100.57116453583225,
+        "passThresholdMeters": 500,
+        "distanceM": 1778.2,
+        "pass": false,
+        "statusCode": 200
+      }
+    }
+  ]
+}
